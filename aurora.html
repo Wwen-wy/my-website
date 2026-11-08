@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aurora · Z 世代员工情绪韧性赋能系统</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15171a; --ink2:#2a2d32; --paper:#f7f5f1; --paper2:#efece5;
+    --muted:#726d64; --faint:#a8a29a; --line:rgba(21,23,26,.12); --line-soft:rgba(21,23,26,.07);
+    --violet:#8b8cf0; --mint:#63d3b6; --peach:#e9a882;
+    --serif:"Noto Serif SC","Source Han Serif SC","Songti SC",STSong,SimSun,serif;
+    --sans:"Inter","PingFang SC","HarmonyOS Sans","Microsoft YaHei",sans-serif;
+    --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper);color:var(--ink2);font-family:var(--sans);font-weight:300;line-height:1.85;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+
+  .bar{position:fixed;top:0;left:0;right:0;height:44px;z-index:100;display:flex;align-items:center;gap:4px;
+      padding:0 26px;background:rgba(247,245,241,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line-soft);}
+  .bar .brand{font-family:var(--serif);font-size:13.5px;letter-spacing:.04em;margin-right:18px;color:var(--ink);}
+  .bar .brand i{font-style:normal;color:var(--violet);}
+  .bar button{border:none;background:none;color:var(--muted);font-family:var(--sans);font-size:11px;letter-spacing:.12em;padding:6px 11px;cursor:pointer;border-radius:999px;transition:.3s;}
+  .bar button:hover{color:var(--ink);background:rgba(21,23,26,.045);}
+  .bar button.on{color:var(--ink);background:rgba(21,23,26,.06);}
+  .bar .sp{flex:1;}
+  .bar .back{font-size:11px;letter-spacing:.12em;color:var(--violet);text-decoration:none;border:1px solid rgba(139,140,240,.45);border-radius:999px;padding:5px 14px;}
+  .bar .back:hover{background:rgba(139,140,240,.1);}
+
+  .pg{display:none;min-height:100vh;padding:96px 24px 90px;}
+  .pg.on{display:block;}
+  .pg.on>*{animation:rise .7s cubic-bezier(.19,1,.22,1) both;}
+  @keyframes rise{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  .inner{max-width:920px;margin:0 auto;}
+
+  .phead{margin-bottom:34px;}
+  .phead .lbl{font-family:var(--mono);font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--faint);margin-bottom:10px;}
+  .phead h2{font-family:var(--serif);font-size:clamp(23px,2.8vw,32px);font-weight:400;color:var(--ink);letter-spacing:-.01em;}
+  .phead p{font-size:13px;color:var(--muted);margin-top:8px;}
+
+  /* HERO */
+  #p1{padding:0;background:#0d0f13;color:#f2efe9;min-height:100svh;position:relative;overflow:hidden;}
+  #p1.on{display:flex;align-items:center;}
+  .aurora{position:absolute;inset:-20%;filter:blur(70px);opacity:.5;pointer-events:none;}
+  .aurora span{position:absolute;border-radius:50%;mix-blend-mode:screen;}
+  .a1{width:54vw;height:54vw;left:-10vw;top:-14vw;background:radial-gradient(circle at 30% 30%,rgba(139,140,240,.9),transparent 66%);animation:d1 26s ease-in-out infinite alternate;}
+  .a2{width:44vw;height:44vw;right:-8vw;top:2vw;background:radial-gradient(circle at 60% 40%,rgba(99,211,182,.75),transparent 62%);animation:d2 32s ease-in-out infinite alternate;}
+  .a3{width:40vw;height:40vw;left:24vw;bottom:-18vw;background:radial-gradient(circle at 50% 50%,rgba(233,168,130,.6),transparent 60%);animation:d3 24s ease-in-out infinite alternate;}
+  @keyframes d1{to{transform:translate3d(9vw,7vw,0) scale(1.15);}}
+  @keyframes d2{to{transform:translate3d(-7vw,9vw,0) scale(1.1);}}
+  @keyframes d3{to{transform:translate3d(5vw,-8vw,0) scale(1.2);}}
+  .grain{position:absolute;inset:0;opacity:.15;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='.5'/></svg>");}
+  .hero-in{max-width:1080px;margin:0 auto;padding:0 44px;position:relative;width:100%;}
+  .hero-in .kick{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(242,239,233,.5);margin-bottom:32px;}
+  .hero-in .kick::before{content:"";width:42px;height:1px;background:rgba(242,239,233,.32);}
+  .hero-in h1{font-family:var(--serif);font-weight:300;font-size:clamp(34px,5vw,66px);line-height:1.24;letter-spacing:-.005em;}
+  .hero-in h1 em{font-style:normal;background:linear-gradient(96deg,var(--mint),var(--violet) 58%,var(--peach));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero-in .sub{margin-top:22px;font-family:var(--serif);font-size:clamp(14px,1.4vw,17px);line-height:1.9;color:rgba(242,239,233,.55);max-width:620px;}
+  .hero-in .acts{margin-top:46px;display:flex;gap:14px;flex-wrap:wrap;}
+  .b1,.b2{display:inline-flex;align-items:center;gap:9px;text-decoration:none;cursor:pointer;border:none;font-family:var(--sans);font-size:12px;letter-spacing:.14em;padding:15px 30px;border-radius:999px;transition:.4s cubic-bezier(.2,.7,.3,1);}
+  .b1{background:#f2efe9;color:#15171a;}
+  .b1:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(0,0,0,.4);}
+  .b2{background:none;border:1px solid rgba(242,239,233,.32);color:rgba(242,239,233,.85);}
+  .b2:hover{border-color:rgba(242,239,233,.8);background:rgba(242,239,233,.06);}
+  .hero-meta{position:absolute;right:44px;bottom:36px;font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:rgba(242,239,233,.3);text-align:right;line-height:2;}
+
+  /* FORM */
+  .form{max-width:620px;}
+  .fld{margin-bottom:26px;}
+  .fld label{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);margin-bottom:9px;}
+  .fld input,.fld textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(21,23,26,.2);padding:10px 0;font-family:var(--serif);font-size:17px;color:var(--ink);outline:none;transition:.3s;resize:none;line-height:1.7;}
+  .fld input:focus,.fld textarea:focus{border-bottom-color:var(--violet);}
+  .fld input::placeholder,.fld textarea::placeholder{color:#c3bdb4;font-size:15px;}
+
+  /* CHAT */
+  .chat{height:440px;overflow-y:auto;display:flex;flex-direction:column;gap:18px;padding:8px 4px 20px;scroll-behavior:smooth;}
+  .chat::-webkit-scrollbar{width:3px;}
+  .chat::-webkit-scrollbar-thumb{background:rgba(21,23,26,.16);}
+  .msg{max-width:74%;font-size:14.5px;line-height:1.9;white-space:pre-wrap;animation:pop .5s cubic-bezier(.19,1,.22,1);}
+  @keyframes pop{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+  .msg.ai{align-self:flex-start;padding-left:0;}
+  .msg.ai .who{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:6px;}
+  .msg.ai .bub{background:#fff;border:1px solid var(--line-soft);padding:15px 20px;border-radius:2px 16px 16px 16px;color:#33363b;}
+  .msg.me{align-self:flex-end;background:var(--ink);color:#f4f1eb;padding:13px 20px;border-radius:16px 2px 16px 16px;font-size:14px;}
+  .dots{display:inline-flex;gap:4px;}
+  .dots i{width:4px;height:4px;border-radius:50%;background:var(--faint);animation:blink 1.3s infinite;}
+  .dots i:nth-child(2){animation-delay:.2s;} .dots i:nth-child(3){animation-delay:.4s;}
+  @keyframes blink{0%,100%{opacity:.25;transform:translateY(0);}50%{opacity:1;transform:translateY(-2px);}}
+  .pin{display:flex;gap:12px;margin-top:22px;border-top:1px solid var(--line-soft);padding-top:18px;}
+  .pin input{flex:1;background:none;border:none;border-bottom:1px solid rgba(21,23,26,.2);padding:9px 2px;font-family:var(--serif);font-size:15px;color:var(--ink);outline:none;}
+  .pin input:focus{border-bottom-color:var(--violet);}
+  .pin input::placeholder{color:#bcb6ad;font-family:var(--sans);font-size:13px;}
+  .pin button{border:none;background:var(--ink);color:#f4f1eb;border-radius:999px;padding:0 24px;font-size:11.5px;letter-spacing:.14em;cursor:pointer;transition:.3s;}
+  .pin button:hover{background:#000;}
+  .prog{margin-top:14px;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:var(--faint);display:flex;justify-content:space-between;}
+  .prog .ln{height:1px;background:var(--line);flex:1;margin:8px 14px 0;position:relative;}
+  .prog .ln i{position:absolute;left:0;top:0;height:1px;width:0;background:var(--violet);transition:width .5s;}
+
+  /* RESULT */
+  .grades{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-soft);margin:26px 0 36px;border:1px solid var(--line-soft);}
+  .grade{background:var(--paper);padding:26px 24px;transition:.4s;}
+  .grade:hover{background:#fff;}
+  .grade .k{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);}
+  .grade .v{font-family:var(--serif);font-size:40px;font-weight:300;line-height:1.2;margin-top:10px;color:var(--ink);}
+  .grade .v small{font-size:13px;color:var(--muted);margin-left:6px;letter-spacing:.05em;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .chip{font-size:12px;color:#6d5b8f;background:rgba(139,140,240,.1);border:1px solid rgba(139,140,240,.2);border-radius:999px;padding:5px 15px;}
+  .resplit{display:grid;grid-template-columns:360px 1fr;gap:44px;align-items:center;margin-top:40px;}
+  .rbox{background:rgba(255,255,255,.55);border:1px solid var(--line-soft);padding:16px;}
+  .rbox svg{width:100%;height:auto;display:block;}
+  .rlist div{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line-soft);font-size:13px;}
+  .rlist div span:last-child{font-family:var(--mono);color:var(--ink);}
+
+  /* CARDS */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);margin-top:26px;}
+  .pcard{background:var(--paper);padding:30px 28px;cursor:pointer;transition:.45s cubic-bezier(.2,.7,.3,1);position:relative;overflow:hidden;}
+  .pcard:hover{background:#fff;}
+  .pcard .idx{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--faint);}
+  .pcard h3{font-family:var(--serif);font-size:17px;font-weight:500;color:var(--ink);margin:12px 0 14px;display:flex;align-items:center;gap:9px;}
+  .pcard h3 em{font-style:normal;width:7px;height:7px;border-radius:50%;background:var(--mint);display:inline-block;}
+  .pcard.s2 h3 em{background:var(--peach);}
+  .pcard.s3 h3 em{background:var(--violet);}
+  .pcard.s4 h3 em{background:#d3b56a;}
+  .pcard ul{list-style:none;}
+  .pcard li{font-size:13.5px;color:#3d4045;padding:6px 0 6px 16px;position:relative;line-height:1.8;}
+  .pcard li::before{content:"";position:absolute;left:0;top:15px;width:5px;height:1px;background:var(--faint);}
+  .pcard .more{position:absolute;right:22px;bottom:18px;font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--faint);opacity:0;transition:.4s;}
+  .pcard:hover .more{opacity:1;}
+
+  /* GALLERY */
+  .gal{display:flex;gap:18px;overflow-x:auto;padding:6px 2px 18px;scroll-snap-type:x mandatory;}
+  .gal::-webkit-scrollbar{height:3px;}
+  .gal::-webkit-scrollbar-thumb{background:rgba(21,23,26,.15);}
+  .shot{flex:0 0 250px;scroll-snap-align:start;cursor:zoom-in;}
+  .shot .im{height:170px;background:var(--paper2);overflow:hidden;border:1px solid var(--line-soft);}
+  .shot img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.3,1);}
+  .shot:hover img{transform:scale(1.06);}
+  .shot .ph{height:100%;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;font-family:var(--serif);}
+  .shot .cap{margin-top:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.8;}
+
+  .note{font-size:12.5px;color:var(--muted);line-height:1.9;}
+  .rule{height:1px;background:var(--line-soft);margin:70px 0;}
+  .flowline{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--faint);margin-top:18px;line-height:2;}
+  .flowline b{color:var(--ink);font-weight:400;}
+  .quote{font-family:var(--serif);font-size:19px;line-height:1.9;color:var(--ink);border-left:1px solid rgba(21,23,26,.2);padding-left:26px;margin:30px 0;}
+
+  /* QUICK */
+  .quick{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+  .quick button{background:none;border:1px solid rgba(139,140,240,.35);color:#6d5b8f;border-radius:999px;padding:6px 15px;font-size:12px;cursor:pointer;transition:.3s;font-family:var(--sans);}
+  .quick button:hover{background:rgba(139,140,240,.1);}
+
+  /* MODAL */
+  .lb{position:fixed;inset:0;background:rgba(10,11,14,.95);z-index:200;display:none;align-items:center;justify-content:center;padding:5vh 5vw;cursor:zoom-out;}
+  .lb.on{display:flex;}
+  .lb img{max-width:100%;max-height:88vh;}
+  .sheet{position:fixed;inset:0;background:rgba(10,11,14,.5);backdrop-filter:blur(4px);z-index:210;display:none;align-items:center;justify-content:center;padding:24px;}
+  .sheet.on{display:flex;}
+  .sheet .box{background:var(--paper);max-width:600px;width:100%;max-height:84vh;overflow-y:auto;padding:44px 46px;position:relative;}
+  .sheet .box h3{font-family:var(--serif);font-size:22px;font-weight:500;color:var(--ink);margin-bottom:18px;}
+  .sheet .box ul{list-style:none;}
+  .sheet .box li{font-size:14px;padding:8px 0 8px 18px;position:relative;color:#3d4045;line-height:1.9;}
+  .sheet .box li::before{content:"";position:absolute;left:0;top:17px;width:6px;height:1px;background:var(--faint);}
+  .sheet .x{position:absolute;top:16px;right:18px;border:none;background:none;font-size:18px;color:var(--faint);cursor:pointer;}
+
+  @media(max-width:820px){
+    .bar{padding:0 14px;overflow-x:auto;}
+    .hero-in{padding:0 24px;}
+    .hero-meta{display:none;}
+    .pg{padding:80px 20px 60px;}
+    .grades{grid-template-columns:1fr;}
+    .resplit{grid-template-columns:1fr;}
+    .grid2{grid-template-columns:1fr;}
+    .chat{height:380px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <span class="brand">Aurora <i>/</i> System</span>
+  <button data-p="p1" class="on">首页</button>
+  <button data-p="p2">信息录入</button>
+  <button data-p="p3">对话测评</button>
+  <button data-p="p4">测评报告</button>
+  <button data-p="p5">能力画像</button>
+  <button data-p="p6">情绪疏导</button>
+  <span class="sp"></span>
+  <a class="back" href="index.html">← 返回作品集</a>
+</div>
+
+<!-- P1 -->
+<section id="p1" class="pg on">
+  <div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+  <div class="grain"></div>
+  <div class="hero-in">
+    <div class="kick">Aurora · AI-Powered Career Resilience for Gen-Z</div>
+    <h1>AI 不是淘汰工具，<br>而是员工的<em>成长伙伴</em>。</h1>
+    <p class="sub">一套会共情的 AI 职业韧性系统：对话式测评，识别你的替代焦虑与倦怠；生成你的不可替代性画像；并陪你走一段向前的路。</p>
+    <div class="acts">
+      <button class="b1" onclick="showPage('p2')">开始 AI 测评 →</button>
+      <button class="b2" onclick="showPage('p6')">只想聊聊</button>
+    </div>
+  </div>
+  <div class="hero-meta">INT6140 · EPORTFOLIO<br>PROTOTYPE 2026</div>
+</section>
+
+<!-- P2 -->
+<section id="p2" class="pg">
+  <div class="inner">
+    <div class="phead">
+      <div class="lbl">Step 01 / Profile</div>
+      <h2>先让我认识你</h2>
+      <p>三项信息，全部可现场自定义。系统会基于你的回答生成个性化结果。</p>
+    </div>
+    <div class="form">
+      <div class="fld"><label>岗位 / Role</label><input id="inJob" placeholder="例如：财会岗 / 新媒体运营 / 客服专员"></div>
+      <div class="fld"><label>日常工作 / Daily Tasks</label><textarea id="inWork" rows="2" placeholder="例如：每天做凭证、报表，月度结账，和业务部门对账……"></textarea></div>
+      <div class="fld"><label>工作困扰 / Concerns（选填）</label><textarea id="inWorry" rows="2" placeholder="例如：担心被 AI 财务软件替代，经常加班，有点内耗……"></textarea></div>
+      <div style="margin-top:38px;"><button class="b1" style="background:var(--ink);color:var(--paper);" onclick="startAssess()">进入对话测评 →</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- P3 -->
+<section id="p3" class="pg">
+  <div class="inner">
+    <div class="phead">
+      <div class="lbl">Step 02 / Conversation</div>
+      <h2>Aurora 咨询师 · 6 轮对话</h2>
+      <p>没有标准答案，也不需要组织语言。想到什么说什么。</p>
+    </div>
+    <div class="chat" id="chat"></div>
+    <div class="prog"><span id="pTxt">0 / 6</span><span class="ln"><i id="pBar"></i></span><span>6 ROUNDS</span></div>
+    <div class="pin">
+      <input id="chatIn" placeholder="输入你的回答，按 Enter 发送…" onkeydown="if(event.key==='Enter')sendChat()">
+      <button onclick="sendChat()">发送</button>
+    </div>
+  </div>
+</section>
+
+<!-- P4 -->
+<section id="p4" class="pg">
+  <div class="inner">
+    <div class="phead">
+      <div class="lbl">Step 03 / Result</div>
+      <h2>你的测评报告</h2>
+      <p>由对话内容实时分析生成——换一段回答，结果就会不同。</p>
+    </div>
+    <div class="grades">
+      <div class="grade"><div class="k">AI 替代焦虑</div><div class="v" id="rAnx">—</div></div>
+      <div class="grade"><div class="k">职业倦怠</div><div class="v" id="rBurn">—</div></div>
+      <div class="grade"><div class="k">测评对象</div><div class="v" id="rWho" style="font-size:26px;">—</div></div>
+    </div>
+    <div>
+      <div class="lbl" style="font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:var(--faint);">核心压力来源</div>
+      <div class="chips" id="rChips"></div>
+    </div>
+    <div class="resplit">
+      <div class="rbox"><svg id="radar" viewBox="0 0 340 300" role="img" aria-label="五维风险雷达图"></svg></div>
+      <div class="rlist">
+        <div><span>重复性 Repetition</span><span>09</span></div>
+        <div><span>规则化 Rule-based</span><span>09</span></div>
+        <div><span>创意需求 Creativity</span><span>02</span></div>
+        <div><span>人际沟通 Communication</span><span>03</span></div>
+        <div><span>决策复杂度 Decision</span><span>03</span></div>
+        <div style="border:none;"><span>整体替代风险</span><span style="color:#c0603a;">HIGH</span></div>
+      </div>
+    </div>
+    <p class="note" style="margin-top:30px;">风险指向的是「工作模块」，不是「人」——凭证与报表高危，判断、沟通与业务洞察仍是你的护城河。</p>
+    <div style="margin-top:34px;"><button class="b1" style="background:var(--ink);color:var(--paper);" onclick="showPage('p5')">查看不可替代性画像 →</button></div>
+  </div>
+</section>
+
+<!-- P5 -->
+<section id="p5" class="pg">
+  <div class="inner">
+    <div class="phead">
+      <div class="lbl">Step 04 / Portrait</div>
+      <h2>个人不可替代性画像</h2>
+      <p>点击任意卡片展开完整内容。</p>
+    </div>
+    <div class="grid2">
+      <div class="pcard" onclick="openCard(this)">
+        <div class="idx">01 / STRENGTH</div>
+        <h3><em></em>AI 难以替代的核心优势</h3>
+        <ul>
+          <li>专业实务功底：能判断「数字对不对」</li>
+          <li>全流程经验：审校 AI 产出的最佳人选</li>
+          <li>跨部门协调：催票对账背后的沟通力</li>
+          <li>自我觉察：主动感知变化、寻求成长</li>
+        </ul>
+        <span class="more">READ MORE →</span>
+      </div>
+      <div class="pcard s2" onclick="openCard(this)">
+        <div class="idx">02 / GAP</div>
+        <h3><em></em>当前短板清单</h3>
+        <ul>
+          <li>分析视角：报表停在「编制」未到「解读」</li>
+          <li>AI 工具实操经验待补</li>
+          <li>业务理解深度不足</li>
+          <li>缺进阶资质（中级 / CMA）</li>
+        </ul>
+        <span class="more">READ MORE →</span>
+      </div>
+      <div class="pcard s3" onclick="openCard(this)">
+        <div class="idx">03 / SHORT TERM</div>
+        <h3><em></em>短期路径 · 3–6 个月</h3>
+        <ul>
+          <li>成为部门「AI 工具第一人」</li>
+          <li>修一门 AI + 财务实操课</li>
+          <li>每月产出一份经营分析</li>
+          <li>启动中级 / CMA 备考</li>
+        </ul>
+        <span class="more">READ MORE →</span>
+      </div>
+      <div class="pcard s4" onclick="openCard(this)">
+        <div class="idx">04 / LONG TERM</div>
+        <h3><em></em>中长期路径 · 1–2 年</h3>
+        <ul>
+          <li>向财务分析 / 业务 BP 跃迁</li>
+          <li>主导一个数字化小项目</li>
+          <li>拿下中级职称或 CMA</li>
+          <li>沉淀个人作品集</li>
+        </ul>
+        <span class="more">READ MORE →</span>
+      </div>
+    </div>
+    <div style="margin-top:36px;"><button class="b2" style="color:var(--ink);border-color:rgba(21,23,26,.25);" onclick="showPage('p6')">继续：和 Aurora 聊聊 →</button></div>
+  </div>
+</section>
+
+<!-- P6 -->
+<section id="p6" class="pg">
+  <div class="inner">
+    <div class="phead">
+      <div class="lbl">Step 05 / Companion</div>
+      <h2>这里没有测评，只有聊天</h2>
+      <p>说什么都可以。我不会打分。</p>
+    </div>
+    <div class="chat" id="chat2" style="height:400px;"></div>
+    <div class="quick">
+      <button onclick="quick2('我总担心被AI替代')">我总担心被 AI 替代</button>
+      <button onclick="quick2('最近加班很累，有点倦怠')">最近加班很累</button>
+      <button onclick="quick2('不知道未来该往哪个方向走')">不知道未来方向</button>
+      <button onclick="quick2('怎么才能减少精神内耗')">怎么减少内耗</button>
+    </div>
+    <div class="pin">
+      <input id="chatIn2" placeholder="说说你此刻的心情，按 Enter 发送…" onkeydown="if(event.key==='Enter')sendChat2()">
+      <button onclick="sendChat2()">发送</button>
+    </div>
+    <div class="rule"></div>
+    <div class="phead" style="margin-bottom:20px;">
+      <div class="lbl">Archive / Gallery</div>
+      <h2 style="font-size:22px;">项目成果</h2>
+    </div>
+    <div class="gal">
+      <div class="shot" onclick="zoom(this)"><div class="im"><img src="assets/poster-a.png" alt=""></div><div class="cap">Capability Poster · Ver. A</div></div>
+      <div class="shot" onclick="zoom(this)"><div class="im"><img src="assets/poster-b.png" alt=""></div><div class="cap">Capability Poster · Ver. B</div></div>
+      <div class="shot" onclick="zoom(this)"><div class="im"><div class="ph" style="background:#2f3a4a">Business Flow</div></div><div class="cap">System Flow · SVG</div></div>
+      <div class="shot" onclick="zoom(this)"><div class="im"><div class="ph" style="background:#4c5f6b">Radar Data</div></div><div class="cap">Risk Radar · Dataset</div></div>
+    </div>
+    <div class="flowline">FLOW · <b>首页</b> → <b>信息录入</b> → <b>对话测评</b> → <b>测评报告</b> → <b>能力画像</b> → <b>情绪疏导</b></div>
+    <div class="quote">替代不会发生在主动转型的人身上。</div>
+  </div>
+</section>
+
+<div class="lb" id="lb" onclick="this.classList.remove('on')"><img id="lbimg" alt=""></div>
+<div class="sheet" id="sheet" onclick="if(event.target===this)closeSheet()">
+  <div class="box">
+    <button class="x" onclick="closeSheet()">✕</button>
+    <div id="sheetBody"></div>
+  </div>
+</div>
+
+<script>
+var state={job:'',work:'',worry:'',qIndex:0,answers:[],done:false};
+var QS=[
+  "谢谢你的分享 🌿\n先说日常：你每天花时间最多的工作是什么？做的时候更像「顺手」，还是「麻木空转」？",
+  "你或身边同事开始用 AI 工具了吗？第一次用它的时候，你心里是「真香」，还是「咯噔一下」？",
+  "说真的——你有多担心 AI 在未来替代你？可以描述一下那种担心的具体画面。",
+  "除了 AI，最近还有什么让你觉得累、或者内耗的事？（加班、迷茫、人际都算）",
+  "换个角度：你觉得自己身上有什么 AI 抢不走的优势？哪怕很小也算。",
+  "最后一个问题 🌙 如果给你 3 个月时间学新东西，你最想往哪个方向提升自己？"
+];
+
+function showPage(id){
+  document.querySelectorAll('.pg').forEach(function(p){p.classList.remove('on');});
+  document.getElementById(id).classList.add('on');
+  document.querySelectorAll('.bar button').forEach(function(b){b.classList.toggle('on',b.dataset.p===id);});
+  window.scrollTo({top:0,behavior:'instant'});
+  if(id==='p6') initSoothe();
+}
+document.querySelectorAll('.bar button').forEach(function(b){b.addEventListener('click',function(){showPage(b.dataset.p);});});
+
+function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+function addMsg(boxId,text,who){
+  var box=document.getElementById(boxId);
+  var m=document.createElement('div');
+  m.className='msg '+who;
+  if(who==='ai'){
+    m.innerHTML='<div class="who">Aurora</div><div class="bub">'+esc(text)+'</div>';
+  }else{
+    m.innerHTML=esc(text);
+  }
+  box.appendChild(m);
+  box.scrollTop=box.scrollHeight;
+  return m;
+}
+function aiType(boxId,text,delay,cb){
+  setTimeout(function(){
+    var box=document.getElementById(boxId);
+    var t=document.createElement('div');
+    t.className='msg ai';
+    t.innerHTML='<div class="who">Aurora</div><div class="bub"><span class="dots"><i></i><i></i><i></i></span></div>';
+    box.appendChild(t); box.scrollTop=box.scrollHeight;
+    setTimeout(function(){
+      t.querySelector('.bub').innerHTML=esc(text);
+      box.scrollTop=box.scrollHeight;
+      if(cb) cb();
+    }, 700);
+  }, delay);
+}
+
+function startAssess(){
+  state.job=document.getElementById('inJob').value.trim()||'财会岗';
+  state.work=document.getElementById('inWork').value.trim()||'处理凭证与报表';
+  state.worry=document.getElementById('inWorry').value.trim();
+  state.qIndex=0; state.answers=[]; state.done=false;
+  document.getElementById('chat').innerHTML='';
+  document.getElementById('pTxt').textContent='0 / 6';
+  document.getElementById('pBar').style.width='0%';
+  showPage('p3');
+  aiType('chat','你好，我是 Aurora 🌙\n已经了解到：你在「'+state.job+'」，日常主要是 '+state.work+'。'+(state.worry?'\n你也提到：'+state.worry+'。':'')+'\n接下来 6 轮轻松聊天，想到什么说什么就好。\n\n'+QS[0], 400);
+}
+
+function sendChat(){
+  if(state.done) return;
+  var inp=document.getElementById('chatIn');
+  var v=inp.value.trim(); if(!v) return;
+  inp.value='';
+  addMsg('chat',v,'me');
+  state.answers.push(v);
+  state.qIndex++;
+  document.getElementById('pTxt').textContent=Math.min(state.qIndex,6)+' / 6';
+  document.getElementById('pBar').style.width=(state.qIndex/6*100)+'%';
+  if(state.qIndex<6){
+    var ack=['谢谢你的坦诚 🌿','我听到了，这很真实。','嗯，我记下来了。','感谢分享，这很重要。'][state.qIndex%4];
+    aiType('chat',ack+'\n\n'+QS[state.qIndex],600);
+  }else{
+    state.done=true;
+    aiType('chat','测评完成。我在整理你的回答——',600,function(){
+      setTimeout(function(){generateReport();},900);
+    });
+  }
+}
+
+function hits(t,w){var n=0;w.forEach(function(k){var i=t.indexOf(k);while(i>-1){n++;i=t.indexOf(k,i+1);}});return n;}
+function generateReport(){
+  var all=state.answers.join(' ');
+  var anx=hits(all,['担心','怕','焦虑','替代','淘汰','恐慌','不安','危'])*2+(state.worry?hits(state.worry,['担心','怕','焦虑','替代','累','内耗']):0);
+  var burn=hits(all,['累','疲惫','加班','内耗','麻木','倦怠','不想','熬','空转'])*2;
+  document.getElementById('rAnx').innerHTML=(anx>=6?'高':(anx>=3?'中':'低'))+'<small>HIGH / MID / LOW</small>';
+  document.getElementById('rBurn').innerHTML=(burn>=6?'偏重':(burn>=3?'中度':'轻微'))+'<small>BURNOUT</small>';
+  document.getElementById('rWho').textContent=state.job;
+  var srcs=[];
+  if(/替代|AI|淘汰|软件/.test(all)) srcs.push('AI 替代恐慌');
+  if(/重复|凭证|报表|录入|单据/.test(all)) srcs.push('重复性工作');
+  if(/迷茫|方向|未来|提升/.test(all)) srcs.push('职业迷茫');
+  if(/内耗|加班|累|疲惫/.test(all)) srcs.push('职场内耗');
+  if(!srcs.length) srcs.push('工作负荷','不确定性');
+  var box=document.getElementById('rChips'); box.innerHTML='';
+  srcs.forEach(function(s){var c=document.createElement('span');c.className='chip';c.textContent=s;box.appendChild(c);});
+  drawRadar();
+  showPage('p4');
+}
+
+function drawRadar(){
+  var svg=document.getElementById('radar'); if(!svg) return;
+  var dims=['重复性','规则化','创意','沟通','决策'], vals=[9,9,2,3,3];
+  var cx=170,cy=150,R=104,n=5,out='';
+  [0.25,0.5,0.75,1].forEach(function(k){
+    var p='';
+    for(var i=0;i<n;i++){var a=-Math.PI/2+i*2*Math.PI/n;p+=(cx+R*k*Math.cos(a)).toFixed(1)+','+(cy+R*k*Math.sin(a)).toFixed(1)+' ';}
+    out+='<polygon points="'+p+'" fill="none" stroke="rgba(21,23,26,.1)" stroke-width="1"/>';
+  });
+  for(var i=0;i<n;i++){
+    var a=-Math.PI/2+i*2*Math.PI/n;
+    out+='<line x1="'+cx+'" y1="'+cy+'" x2="'+(cx+R*Math.cos(a)).toFixed(1)+'" y2="'+(cy+R*Math.sin(a)).toFixed(1)+'" stroke="rgba(21,23,26,.08)" stroke-width="1"/>';
+  }
+  var vp='';
+  for(var i=0;i<n;i++){var a=-Math.PI/2+i*2*Math.PI/n;vp+=(cx+R*vals[i]/10*Math.cos(a)).toFixed(1)+','+(cy+R*vals[i]/10*Math.sin(a)).toFixed(1)+' ';}
+  out+='<defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#63d3b6"/><stop offset="1" stop-color="#8b8cf0"/></linearGradient></defs>';
+  out+='<polygon points="'+vp+'" fill="rgba(139,140,240,.14)" stroke="url(#rg)" stroke-width="1.6"/>';
+  for(var i=0;i<n;i++){
+    var a=-Math.PI/2+i*2*Math.PI/n;
+    var px=cx+R*vals[i]/10*Math.cos(a),py=cy+R*vals[i]/10*Math.sin(a);
+    out+='<circle cx="'+px.toFixed(1)+'" cy="'+py.toFixed(1)+'" r="3" fill="#8b8cf0"/>';
+    var lx=cx+(R+28)*Math.cos(a),ly=cy+(R+28)*Math.sin(a);
+    out+='<text x="'+lx.toFixed(1)+'" y="'+ly.toFixed(1)+'" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#726d64" font-family="Inter,sans-serif">'+dims[i]+' <tspan fill="#15171a">'+vals[i]+'</tspan></text>';
+  }
+  svg.innerHTML=out;
+}
+
+var sootheInit=false;
+function initSoothe(){
+  if(sootheInit) return; sootheInit=true;
+  aiType('chat2','我在这里 🌙\n这里没有测评，没有打分，只有聊天。\n最近让你最不舒服的一件事是什么？说出来，我陪你一起看。',400);
+}
+function quick2(t){document.getElementById('chatIn2').value=t;sendChat2();}
+function sendChat2(){
+  var inp=document.getElementById('chatIn2');
+  var v=inp.value.trim(); if(!v) return;
+  inp.value='';
+  addMsg('chat2',v,'me');
+  var r;
+  if(/替代|AI|淘汰|机器/.test(v)) r='你的担心，其实是对变化的敏感——这不是软弱 🌿\n记住一句话：「AI 越强，会用 AI 的人越值钱。」这周可以只做一件小事：去试试公司里一个自动化功能。\n替代不会发生在主动转型的人身上。';
+  else if(/累|加班|倦|熬|疲惫/.test(v)) r='先给你一个抱抱。\n身体在透支、心在打消耗战，这种累是双份的。今晚试一件事：到家后给自己 3 分钟「下班仪式」——洗手、深呼吸五次，告诉自己「今天的部分到此为止」。\n事可以忙，心不能慌。';
+  else if(/迷茫|方向|未来|不知道/.test(v)) r='迷茫恰恰说明你站在转折点上，而转折点是普通人翻盘唯一的机会窗口 🌱\n不需要立刻找到答案，只问自己：未来 3 个月，我想多一件「AI 抢不走」的本事吗？';
+  else if(/内耗|焦虑|担心|压力|慌/.test(v)) r='试试「焦虑暂停法」✂️\n念头一来就对自己说：「记下了，晚上 8 点的焦虑时间再想。」每天只给焦虑 15 分钟专属时间。\n焦虑最怕的不是被反驳，而是被约谈。';
+  else r='谢谢你愿意说出来 🌿\n情绪被听见，毒性就减半。\n你不需要今天就变强，只需要：今晚好好睡觉，明天做好一件小事。改变从来不是大爆发，而是很多个「今天稍微好一点点」的叠加。我一直在。';
+  aiType('chat2',r,700);
+}
+
+function zoom(el){
+  var img=el.querySelector('img');
+  if(img){document.getElementById('lbimg').src=img.src;document.getElementById('lb').classList.add('on');}
+  else{alert('该成果为独立文件，请在项目文件夹中查看对应 SVG / 数据文件。');}
+}
+function openCard(el){
+  var t=el.querySelector('h3').textContent, list=el.querySelector('ul').innerHTML;
+  document.getElementById('sheetBody').innerHTML='<h3>'+t+'</h3><ul>'+list+'</ul>';
+  document.getElementById('sheet').classList.add('on');
+}
+function closeSheet(){document.getElementById('sheet').classList.remove('on');}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeSheet();document.getElementById('lb').classList.remove('on');}});
+</script>
+</body>
+</html>
