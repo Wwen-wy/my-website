@@ -52,10 +52,10 @@
   .hero-inner{position:relative;max-width:1180px;width:100%;margin:0 auto;}
   .kicker{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;color:rgba(242,239,233,.55);margin-bottom:38px;}
   .kicker::before{content:"";width:44px;height:1px;background:rgba(242,239,233,.35);}
-  .hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(38px,5.6vw,76px);line-height:1.24;letter-spacing:-.005em;}
+  .hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(38px,5.6vw,76px);line-height:1.24;letter-spacing:-.005em;text-wrap:pretty;}
   .hero h1 em{font-style:normal;background:linear-gradient(96deg,var(--mint),var(--violet) 58%,var(--peach));-webkit-background-clip:text;background-clip:text;color:transparent;}
   .hero .en{margin-top:26px;font-family:var(--serif);font-weight:300;font-size:clamp(14px,1.35vw,17px);line-height:1.8;color:rgba(242,239,233,.52);max-width:640px;}
-  .hero .meta{display:flex;flex-wrap:wrap;margin-top:54px;border-top:1px solid rgba(242,239,233,.14);padding-top:22px;max-width:820px;}
+  .hero .meta{display:flex;flex-wrap:wrap;margin-top:44px;border-top:1px solid rgba(242,239,233,.14);padding-top:22px;max-width:820px;}
   .hero .meta div{padding-right:38px;margin-right:38px;border-right:1px solid rgba(242,239,233,.14);}
   .hero .meta div:last-child{border:none;padding:0;margin:0;}
   .hero .meta .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:rgba(242,239,233,.4);text-transform:uppercase;}
@@ -66,6 +66,10 @@
   .btn.solid:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.35);}
   .btn.ghost{border:1px solid rgba(242,239,233,.35);color:rgba(242,239,233,.86);}
   .btn.ghost:hover{border-color:rgba(242,239,233,.85);background:rgba(242,239,233,.06);}
+  .hero-live{margin-top:40px;display:inline-flex;align-items:center;gap:11px;text-decoration:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;color:rgba(242,239,233,.5);border-bottom:1px solid rgba(242,239,233,.16);padding-bottom:6px;transition:.35s;}
+  .hero-live:hover{color:#f2efe9;border-color:rgba(242,239,233,.55);}
+  .hero-live .dot{width:5px;height:5px;border-radius:50%;background:var(--mint);box-shadow:0 0 9px var(--mint);flex:0 0 5px;}
+
   .scrollhint{position:absolute;left:44px;bottom:34px;font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;color:rgba(242,239,233,.38);display:flex;align-items:center;gap:12px;}
   .scrollhint i{display:block;width:1px;height:36px;background:linear-gradient(to bottom,rgba(242,239,233,.5),transparent);animation:pulse 2.4s ease-in-out infinite;}
   @keyframes pulse{0%,100%{opacity:.3;transform:scaleY(.7);}50%{opacity:1;transform:scaleY(1);}}
@@ -86,12 +90,10 @@
   .modhead .en{margin-top:10px;font-family:var(--serif);font-style:italic;font-size:13.5px;color:var(--faint);}
   .body{max-width:760px;}
   .body.offset{margin-left:158px;}
-  .body p{font-size:16px;line-height:2.02;margin:18px 0;color:#33363b;}
+  .body p{font-size:16px;line-height:2.02;margin:18px 0;color:#33363b;text-wrap:pretty;}
   .body p.lead{font-size:19px;line-height:1.95;color:var(--ink);}
   h3{font-family:var(--serif);font-size:19px;font-weight:500;margin:44px 0 6px;color:var(--ink);letter-spacing:.01em;display:flex;align-items:baseline;gap:12px;}
   h3 i{font-family:var(--mono);font-style:normal;font-size:10.5px;letter-spacing:.16em;color:var(--faint);}
-  .fill{margin:24px 0;padding:18px 22px;border-left:2px solid var(--peach);background:rgba(233,168,130,.08);font-size:14px;line-height:1.9;color:#8a6249;}
-  .fill::before{content:"✍ 个人补充位 · ";font-weight:500;letter-spacing:.04em;}
   blockquote{margin:44px 0;padding-left:30px;border-left:1px solid rgba(21,23,26,.22);font-family:var(--serif);font-size:clamp(18px,2.1vw,23px);line-height:1.85;font-weight:300;color:var(--ink);}
   blockquote small{display:block;margin-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--faint);text-transform:uppercase;}
 
@@ -102,6 +104,13 @@
   tr:hover td{background:rgba(21,23,26,.018);}
   .score{font-family:var(--mono);font-size:15px;color:var(--ink);}
 
+  table.tasks{font-size:12.8px;margin-top:24px;}
+  table.tasks th{padding-bottom:10px;}
+  table.tasks td{padding:9px 14px 9px 0;line-height:1.62;}
+  table.tasks td:first-child{font-family:var(--mono);font-size:10.2px;letter-spacing:.08em;color:var(--faint);}
+  table.tasks td:nth-child(3){font-family:var(--mono);font-size:10.2px;letter-spacing:.04em;color:rgba(21,23,26,.5);white-space:nowrap;}
+  table.tasks td:nth-child(4){font-size:11.8px;color:rgba(21,23,26,.62);}
+
   figure{margin:44px 0;}
   figure .frame{overflow:hidden;background:var(--paper-2);cursor:zoom-in;}
   figure img{width:100%;display:block;transition:transform 1.2s cubic-bezier(.2,.7,.3,1);}
@@ -109,17 +118,22 @@
   figcaption{margin-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);display:flex;gap:12px;}
   figcaption b{color:var(--muted);font-weight:500;}
 
-  .radar-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin:46px 0;}
+  .radar-wrap{display:grid;grid-template-columns:360px 1fr;gap:40px;align-items:center;margin:46px 0;}
   .radar-box{background:rgba(255,255,255,.55);border:1px solid var(--line-soft);padding:18px;}
   .radar-box svg{display:block;width:100%;height:auto;}
+  .radar-legend{max-width:340px;}
   .radar-legend div{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line-soft);font-size:13px;}
   .radar-legend div span:first-child{color:var(--muted);}
   .radar-legend div span:last-child{font-family:var(--mono);color:var(--ink);}
+  .radar-legend .tier span:last-child{font-family:var(--sans);font-size:12.5px;color:var(--muted);letter-spacing:0;}
+  .ui2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+  .ui2 img{width:100%;max-width:100%;min-width:0;height:auto;display:block;border:1px solid var(--line-soft);border-radius:2px;cursor:zoom-in;}
+  @media (max-width:760px){.ui2{grid-template-columns:1fr;}}
 
   .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line-soft);margin:40px 0 46px;border:1px solid var(--line-soft);}
   .step{background:var(--paper);padding:24px 20px;transition:.4s;}
   .step:hover{background:#fff;}
-  .step .n{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:var(--faint);}
+  .step .n{white-space:nowrap;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:var(--faint);}
   .step b{display:block;font-family:var(--serif);font-size:15px;font-weight:500;margin:10px 0 8px;color:var(--ink);}
   .step p{font-size:12.5px;line-height:1.8;color:var(--muted);margin:0;}
 
@@ -127,6 +141,34 @@
   .mini{border-top:1px solid rgba(21,23,26,.22);padding-top:20px;}
   .mini b{display:block;font-family:var(--serif);font-size:15.5px;font-weight:500;color:var(--ink);margin-bottom:8px;}
   .mini p{font-size:13.5px;line-height:1.85;color:var(--muted);margin:0;}
+
+  /* ---- A/B/C 动效增强 ---- */
+  /* 图片：入场时从「裁切」状态展开 */
+  figure[data-reveal] .frame{clip-path:inset(9% 6% 9% 6%);transform:scale(1.045);
+    transition:clip-path 1.25s cubic-bezier(.2,.7,.3,1),transform 1.25s cubic-bezier(.2,.7,.3,1);}
+  figure[data-reveal].in .frame{clip-path:inset(0 0 0 0);transform:none;}
+
+  /* 卡片组：stagger 依次入场 */
+  .steps .step,.cards3 .mini{opacity:0;transform:translateY(22px);
+    transition:opacity .9s cubic-bezier(.2,.7,.3,1),transform .9s cubic-bezier(.2,.7,.3,1),background .4s;}
+  .steps.in .step:nth-child(2),.cards3.in .mini:nth-child(2){transition-delay:.14s;}
+  .steps.in .step:nth-child(3),.cards3.in .mini:nth-child(3){transition-delay:.26s;}
+  .steps.in .step:nth-child(4){transition-delay:.38s;}
+  .steps.in .step:nth-child(5){transition-delay:.5s;}
+  .steps.in .step,.cards3.in .mini{opacity:1;transform:none;}
+
+  /* 任务清单表：逐行浮现 */
+  table.tasks tbody tr{opacity:0;transform:translateY(12px);
+    transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1);}
+  table.tasks.in tbody tr{opacity:1;transform:none;}
+
+  /* 数字滚动占位 */
+  .cu{font-feature-settings:'tnum';color:var(--ink);}
+
+  @media (prefers-reduced-motion:reduce){
+    figure[data-reveal] .frame{clip-path:none;transform:none;transition:none;}
+    .steps .step,.cards3 .mini,table.tasks tbody tr{opacity:1!important;transform:none!important;transition:none!important;}
+  }
 
   .appendix{background:#101216;color:#e8e5df;padding:110px 0;}
   .appendix .inner{max-width:1180px;margin:0 auto;padding:0 44px;}
@@ -160,6 +202,84 @@
   header.hero .cursor-glow{background:radial-gradient(circle,rgba(139,140,240,.3),transparent 65%);}
   @media (hover:none){.cursor-glow,.side-dots{display:none;}}
 
+  /* ================= v3 · 动效与工艺 ================= */
+  :root{--ease:cubic-bezier(.19,1,.22,1);}
+
+  /* 进场幕 */
+  #intro{position:fixed;inset:0;z-index:999;background:#0b0d11;display:grid;place-items:center;
+    transition:opacity .95s var(--ease),visibility .95s;animation:introOut .9s var(--ease) 2.3s forwards;}
+  @keyframes introOut{to{opacity:0;visibility:hidden;}}
+  #intro.done{opacity:0;visibility:hidden;pointer-events:none;}
+  #intro .t{font-family:var(--serif);font-size:clamp(17px,2.1vw,25px);letter-spacing:.24em;color:#f2efe9;text-align:center;}
+  #intro .s{margin-top:18px;font-family:var(--mono);font-size:9px;letter-spacing:.42em;color:rgba(242,239,233,.4);text-align:center;}
+  #intro .bar{position:absolute;left:50%;bottom:15vh;transform:translateX(-50%);width:150px;height:1px;background:rgba(242,239,233,.12);}
+  #intro .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--mint),var(--violet));animation:loadbar 1.15s var(--ease) .12s forwards;}
+  @keyframes loadbar{to{width:100%}}
+
+  /* 首屏巨字与自述 */
+  .hero-word{position:absolute;right:-3vw;top:35%;font-family:var(--serif);font-size:16vw;line-height:.78;
+    letter-spacing:-.03em;color:transparent;-webkit-text-stroke:1px rgba(242,239,233,.042);
+    pointer-events:none;user-select:none;white-space:nowrap;}
+  .hero-quote{margin-top:32px;padding-left:20px;border-left:1px solid rgba(242,239,233,.24);max-width:508px;text-wrap:pretty;
+    font-family:var(--serif);font-size:15.5px;line-height:1.95;color:rgba(242,239,233,.6);}
+  .hero-quote b{font-weight:400;color:rgba(242,239,233,.9);}
+  header.hero .hero-inner{will-change:transform,opacity;}
+
+  /* 揭示：加一点失焦 */
+  [data-reveal]{filter:blur(7px);transition:opacity 1.05s var(--ease),transform 1.05s var(--ease),filter 1.05s var(--ease);}
+  [data-reveal].in{filter:blur(0);}
+
+  /* 章节序号改描边字 + 渐显分隔线 */
+  .modnum{color:transparent;-webkit-text-stroke:1px rgba(21,23,26,.26);opacity:1;
+    transition:color .7s var(--ease),-webkit-text-stroke-color .7s;}
+  .modhead:hover .modnum{color:rgba(21,23,26,.045);-webkit-text-stroke-color:rgba(21,23,26,.42);}
+  .modhead::after{content:"";grid-column:1/-1;height:1px;margin-top:24px;
+    background:linear-gradient(90deg,rgba(21,23,26,.2),rgba(21,23,26,0) 72%);
+    transform:scaleX(0);transform-origin:left;transition:transform 1.5s var(--ease) .1s;}
+  .modhead.in::after{transform:scaleX(1);}
+
+  /* 五维评分：数字 + 生长条 */
+  td.score{white-space:nowrap;}
+  td.score b{font-family:var(--mono);font-size:15px;font-weight:400;color:var(--ink);letter-spacing:.04em;}
+  td.score .bar{display:block;margin-top:9px;width:104px;height:2px;background:rgba(21,23,26,.09);position:relative;overflow:hidden;}
+  td.score .bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,var(--mint),var(--violet));
+    transition:width 1.35s var(--ease) .25s;}
+  .in td.score .bar i{width:calc(var(--v,0) * 10%);}
+
+  /* 图像：自上而下显影 + 放大提示 */
+  figure .frame{position:relative;clip-path:inset(0 0 100% 0);transition:clip-path 1.45s var(--ease);}
+  figure.in .frame{clip-path:inset(0 0 0 0);}
+  figure .frame::after{content:"⤢  点击放大";position:absolute;right:14px;bottom:12px;font-family:var(--mono);
+    font-size:9px;letter-spacing:.16em;color:rgba(250,248,244,.92);background:rgba(21,23,26,.6);
+    padding:6px 10px;border-radius:2px;opacity:0;transform:translateY(6px);transition:.45s var(--ease);}
+  figure:hover .frame::after{opacity:1;transform:none;}
+
+  /* 封面图版（暗场收束） */
+  .plate{position:relative;background:#0b0d11;color:#f2efe9;overflow:hidden;padding:104px 0 96px;border-top:1px solid rgba(242,239,233,.09);border-bottom:1px solid rgba(242,239,233,.09);}
+  .plate::before{content:"";position:absolute;inset:0;
+    background:radial-gradient(58% 50% at 14% 6%,rgba(139,140,240,.22),transparent 70%),
+               radial-gradient(52% 46% at 94% 82%,rgba(233,168,130,.12),transparent 72%);}
+  .plate .inner{position:relative;max-width:1180px;margin:0 auto;padding:0 44px;
+    display:grid;grid-template-columns:1fr 452px;gap:68px;align-items:center;}
+  .plate .label{font-family:var(--mono);font-size:10px;letter-spacing:.28em;color:rgba(242,239,233,.45);text-transform:uppercase;}
+  .plate h2{font-family:var(--serif);font-weight:300;font-size:clamp(24px,2.9vw,34px);line-height:1.52;margin-top:18px;letter-spacing:.01em;}
+  .plate p{margin-top:20px;font-size:15px;line-height:2;color:rgba(242,239,233,.58);max-width:440px;}
+  .plate .link{margin-top:28px;display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:rgba(242,239,233,.9);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;border-bottom:1px solid rgba(242,239,233,.28);padding-bottom:7px;transition:.4s;}
+  .plate .link:hover{border-color:#f2efe9;gap:16px;}
+  .plate figure{margin:0;clip-path:none;}
+  .plate .frame{clip-path:none;}
+  .plate img{width:100%;display:block;border:1px solid rgba(242,239,233,.14);box-shadow:0 34px 90px rgba(0,0,0,.65);filter:brightness(1.05);}
+  .plate .cap{margin-top:16px;font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;color:rgba(242,239,233,.46);white-space:nowrap;}
+
+  @media (max-width:900px){
+    .plate .inner{grid-template-columns:1fr;gap:42px;}
+    .plate img{max-width:330px;}
+    .hero-word{font-size:34vw;bottom:auto;top:6vh;opacity:.7;}
+    .hero-quote{max-width:none;}
+  }
+  section.mod,.appendix,.plate{scroll-margin-top:84px;}
+
   @media(max-width:900px){
     nav{padding:16px 22px;} nav ul{display:none;} nav.solid{padding:12px 22px;}
     header.hero{padding:120px 24px 80px;}
@@ -176,17 +296,114 @@
     footer{padding:36px 24px;flex-direction:column;}
     body{line-height:1.85;}
     .body p{font-size:15.5px;}
+    .hero h1{font-size:clamp(24px,6.2vw,32px);text-wrap:pretty;}
+    .hero .meta{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px;}
+    .hero .meta div{border:none;padding:0;margin:0;}
+    .hero-quote{font-size:14.5px;padding-left:16px;}
+    .hero-word{opacity:.45;}
+    .kicker{font-size:9px;letter-spacing:.2em;}
+    .plate{padding:76px 0 70px;}
+    .plate .cap{white-space:normal;}
   }
   @media (prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important;}
-    [data-reveal]{opacity:1;transform:none;}
+    [data-reveal]{opacity:1;transform:none;filter:none;}
   }
+
+  /* ===== 页面水彩小物 · 全页慢速飘动，悬停低语 ===== */
+  .motes{position:fixed;inset:0;z-index:58;pointer-events:none;overflow:hidden;}
+  .mote{position:absolute;pointer-events:auto;background:none;border:0;padding:0;
+    opacity:var(--o,.42);transition:opacity .9s cubic-bezier(.19,1,.22,1);
+    will-change:transform;}
+  .mote .ink{display:block;width:100%;height:100%;transform:rotate(var(--r,0deg));
+    filter:url(#wc);
+    -webkit-mask-image:radial-gradient(closest-side,#000 86%,rgba(0,0,0,.55) 97%,transparent 100%);
+    mask-image:radial-gradient(closest-side,#000 86%,rgba(0,0,0,.55) 97%,transparent 100%);}
+  .mote svg{display:block;width:100%;height:100%;overflow:visible;}
+  .mote:hover,.mote.hot{opacity:min(.82,calc(var(--o,.42) + .26));}
+
+  .whisper{position:fixed;left:0;top:0;z-index:96;width:max-content;max-width:244px;padding:18px 23px 19px;border-radius:18px;
+    pointer-events:none;opacity:0;
+    transform:translate3d(var(--x,0px),calc(-50% + 10px),0) scale(.984);
+    transition:opacity .85s cubic-bezier(.19,1,.22,1), transform 1.05s cubic-bezier(.19,1,.22,1);
+    font-family:var(--serif);font-size:15px;line-height:2;letter-spacing:.02em;color:#3f3d36;
+    background-color:#fdfaf2;
+    background-image:
+      radial-gradient(58% 66% at 8% 6%,rgba(255,255,255,.95) 0%,rgba(255,255,255,0) 70%),
+      radial-gradient(72% 62% at 92% 94%,var(--w1,rgba(126,146,128,.26)) 0%,rgba(255,255,255,0) 72%),
+      radial-gradient(52% 48% at 82% 2%,var(--w2,rgba(138,156,176,.18)) 0%,rgba(255,255,255,0) 76%),
+      radial-gradient(48% 40% at 30% 100%,rgba(198,178,146,.14) 0%,rgba(255,255,255,0) 78%);
+    box-shadow:0 20px 44px -26px rgba(72,60,42,.42),0 2px 8px -4px rgba(72,60,42,.14),0 0 0 1px rgba(150,132,104,.14) inset;
+    text-wrap:pretty;}
+  .whisper::after{content:"";position:absolute;inset:0;border-radius:18px;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E");
+    opacity:.07;mix-blend-mode:multiply;}
+  .whisper.on{opacity:1;transform:translate3d(var(--x,0px),-50%,0) scale(1);}
+
+  @media (max-width:900px){
+    .mote{display:none;}
+    .whisper{max-width:min(268px,calc(100vw - 40px));font-size:14px;padding:16px 20px 17px;}
+  }
+  @media print{.motes,.whisper{display:none!important;}}
 </style>
 </head>
 <body>
 
 <div class="progress" id="bar"></div>
 <div class="cursor-glow" id="glow"></div>
+
+<!-- 水彩笔触滤镜与小图形 -->
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute;pointer-events:none;opacity:0">
+  <defs>
+    <filter id="bleed" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6.5"/>
+    </filter>
+    <filter id="wc" x="-30%" y="-30%" width="160%" height="160%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feGaussianBlur in="d" stdDeviation="0.5"/>
+    </filter>
+    <symbol id="m-star" viewBox="0 0 100 100">
+      <path d="M50 8 C55 33 67 45 92 50 C67 55 55 67 50 92 C45 67 33 55 8 50 C33 45 45 33 50 8 Z"
+        fill="currentColor" filter="url(#bleed)" opacity=".55"/>
+      <path d="M50 14 C54 35 65 46 86 50 C65 54 54 65 50 86 C46 65 35 54 14 50 C35 46 46 35 50 14 Z"
+        fill="currentColor"/>
+      <path d="M50 22 C53 38 62 47 78 50 C62 53 53 62 50 78 C47 62 38 53 22 50 C38 47 47 38 50 22 Z"
+        fill="#fffdf7" opacity=".13"/>
+    </symbol>
+    <symbol id="m-star5" viewBox="0 0 100 100">
+      <path d="M50 8 L59.5 36 L89.5 37 L65.5 55.5 L74 85 L50 68.5 L26 85 L34.5 55.5 L10.5 37 L40.5 36 Z"
+        fill="currentColor" filter="url(#bleed)" opacity=".55"/>
+      <path d="M50 13 L58.5 38.5 L86 39.5 L64 56.5 L71.5 83 L50 67.5 L28.5 83 L36 56.5 L14 39.5 L41.5 38.5 Z"
+        fill="currentColor"/>
+      <path d="M50 24 L55.5 41 L73 41.5 L59 52.5 L63.5 69.5 L50 59.5 L36.5 69.5 L41 52.5 L27 41.5 L44.5 41 Z"
+        fill="#fffdf7" opacity=".12"/>
+    </symbol>
+    <symbol id="m-leaf" viewBox="0 0 100 100">
+      <path d="M50 8 C70 25 76 50 63 69 C56 78 51.5 83 50 84 C48.5 83 44 78 37 69 C24 50 30 25 50 8 Z"
+        fill="currentColor" filter="url(#bleed)" opacity=".55"/>
+      <path d="M50 12 C68 28 74 51 61 68 C55 77 51 82 50 83 C49 82 45 77 39 68 C26 51 32 28 50 12 Z"
+        fill="currentColor"/>
+      <path d="M50 12 C64 28 70 50 59 66 C54 73 51 78 50 79 C49 78 46 73 41 66 C31 50 36 28 50 12 Z"
+        fill="#fffdf7" opacity=".12"/>
+      <path d="M50 32 C50.6 47 50.6 62 50 79" fill="none" stroke="#fffdf8" stroke-opacity=".3"
+        stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M50 81 C50 87 48 91 45 94" fill="none" stroke="currentColor"
+        stroke-width="3.4" stroke-linecap="round" opacity=".85"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="motes" id="motes" aria-hidden="true"></div>
+<div class="whisper" id="whisper" aria-hidden="true"></div>
+
+<div id="intro">
+  <div>
+    <div class="t">极光 · Aurora</div>
+    <div class="s">INT6140&nbsp;&nbsp;/&nbsp;&nbsp;THE FUTURE OF WORK</div>
+  </div>
+  <div class="bar"><i></i></div>
+</div>
 
 <nav id="nav">
   <div class="logo">Aurora <i>/</i> ePortfolio</div>
@@ -202,25 +419,24 @@
 
 <header class="hero" id="top">
   <div class="aurora"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+  <div class="hero-word">AURORA</div>
   <div class="grain"></div>
   <div class="hero-inner">
     <div class="kicker">INT6140 · The Future of Work &amp; Human Resources · EdUHK</div>
     <h1 class="split">
       <span><i>以 AI 疗愈 AI 焦虑</i></span>
-      <span><i>智能体时代 <em>Z 世代</em> 财会人的</i></span>
-      <span><i>职业韧性重构</i></span>
+      <span><i>智能体时代 <em>Z 世代</em></i></span>
+      <span><i>财会人的职业韧性重构</i></span>
     </h1>
     <p class="en">Healing AI Anxiety with AI — Rebuilding Career Resilience for Gen-Z Accountants in the Agentic Era</p>
-    <div class="meta">
-      <div><div class="k">Author</div><div class="v">＿＿＿＿</div></div>
-      <div><div class="k">Student ID</div><div class="v">＿＿＿＿</div></div>
-      <div><div class="k">Field</div><div class="v">财会 · 核算方向</div></div>
-      <div><div class="k">Year</div><div class="v">2026</div></div>
-    </div>
+    <p class="hero-quote">我 24 岁，在财会岗，也打算一直做下去。这份作品集想回答的其实是一个很私人的问题：<b>当工具比我先学会我的活，我还剩什么。</b></p>
     <div class="hero-cta">
       <a class="btn solid" href="aurora.html" target="_blank">现场体验 Aurora 系统 ↗</a>
       <a class="btn ghost" href="#m1">开始阅读 ↓</a>
     </div>
+    <a class="hero-live" href="https://wwen-wy.github.io/my-website/" target="_blank" rel="noopener">
+      <span class="dot"></span>LIVE&nbsp;·&nbsp;wwen-wy.github.io/my-website
+    </a>
   </div>
   <div class="scrollhint"><i></i>SCROLL</div>
 </header>
@@ -244,13 +460,42 @@
     </div>
   </div>
   <div class="body offset">
-    <p class="lead" data-reveal>我是一名 26 岁的财会从业者，属于与生成式 AI「同场入场」的 Z 世代：我们的职业锚定期，恰好与 AI 能力爆发期完全重叠。</p>
-    <p data-reveal>日常工作中，我大量处理凭证录入、报表编制与对账等高重复性任务；与此同时，「AI 财务软件会否取代我」的担忧、加班与精神内耗，构成了我这一代白领真实而沉默的心理底色。这份作品集，正是从这份沉默里长出来的。</p>
-    <div class="fill" data-reveal>补充一段你观察或亲历的「AI 进入工作流」的具体场景（公司上线智能记账、同事转岗、你第一次用 AI 完成原本半天的工作），以及它带给你的情绪冲击。这是全文共情力的来源。</div>
+    <p class="lead" data-reveal>我 24 岁，在财会核算岗，从毕业到现在没换过行。有点巧的是，我做财务的这几年，正好是身边所有人开始谈 AI 的这几年。前辈手里有十几年的经验垫着，我资历还浅，工具已经换了两三轮。这行我打算继续做，只是做法得跟着换。</p>
+    <p data-reveal>我的日常是审报销单、核发票、记台账、对账、月结。加班不算新闻，真让我睡不着的其实是另一件事：这些活如果哪天不需要人了，我算什么。这份作品集就是从这个问题开始的，算不上什么宏大的研究计划。</p>
+    <p data-reveal>转折来得很普通，就是一个下午的事。公司把发票查验改成系统自动识别，原本两个人要花一周逐张核对的活，压成了半天加一次抽查。那天我把省下来的时间用去追一张连续三个月挂账的应收，最后查出来是业务部门重复开票。说不上顿悟，就是那天我第一次觉得：我干的这摊活里，有一部分确实是机器干不了的。</p>
     <h3 data-reveal><i>1.1</i>我的未来工作哲学</h3>
-    <blockquote data-reveal>AI 不应是悬在员工头顶的「淘汰倒计时」，而应成为员工的「成长外骨骼」。人的价值不会消失，而是向共情、判断、创造与责任承担迁移——职业韧性的本质，不是逃离技术浪潮，而是学会骑上浪板。</blockquote>
-    <p data-reveal>基于这一哲学，本作品集提出核心命题：<b>既然 AI 替代焦虑由 AI 引发，那么疗愈它最有力的工具，恰恰也是 AI。</b>后文的 Aurora 系统，正是这一命题的落地实验。</p>
-    <div class="fill" data-reveal>补充你的价值观与社会责任视角：为什么你在意「被技术甩下的人」——可联系自身或身边人的职业经历，或你对技术时代公平性的思考。</div>
+    <blockquote data-reveal>我现在对 AI 的看法很朴素：它像一副外骨骼，不替人走路，但能让人多扛一点。会不会被淘汰，我觉得不取决于你会不会用 AI，而取决于你手上还剩多少 AI 做不了的事。</blockquote>
+    <p data-reveal>顺着这个想法往下走，就有了这套作品集的命题，说起来有点绕：<b>如果焦虑是 AI 带来的，能不能让 AI 自己来拆？</b>后面的 Aurora 系统，就是我拿这个问题做的一次实验。</p>
+    <p data-reveal>我在意「被技术甩下的人」，是因为我身边就有。我妈在一家小厂做了十几年出纳，去年厂里换了新财务系统，她学了三个月还是不敢自己点「结账」，每次都要等年轻人回来帮忙。我教她的时候特别难受——不是她不够努力，是没有人给她设计一条能走上去的台阶。我做 Aurora，一半是给自己，一半是想证明一件事：台阶是可以被设计出来的。</p>
+
+    <h3 data-reveal><i>1.2</i>我的任务清单：把岗位拆成十五项</h3>
+    <p data-reveal>替代以任务为单位发生，所以我先把自己手上的活一项一项列出来。不写岗位说明书上的套话，只写我实际在做、能被观察到的动作：</p>
+    <p data-reveal style="font-size:13px;color:rgba(21,23,26,.55);line-height:1.85;">判断栏的四个标签是我自己的分类口径：<b>AI 可代做</b>指规则明确、出错后还能事后查出来的环节；<b>人机协作</b>指 AI 出初稿、我签字定稿；<b>须人判断</b>指要拿准则与业务实质去权衡的；<b>人担责</b>指一旦出问题由我负责、转不给系统。清单依据 2026 年 10 月本人岗位的实际分工整理。</p>
+
+    <table class="tasks" data-reveal>
+      <colgroup><col style="width:8%"><col style="width:54%"><col style="width:12%"><col style="width:26%"></colgroup>
+      <thead><tr><th>No.</th><th>工作单元</th><th>频率</th><th>我的判断</th></tr></thead>
+      <tbody>
+        <tr><td>01</td><td>审核费用报销单据：单据完整性、审批流是否齐全</td><td>每日</td><td>AI 初筛，人复核</td></tr>
+        <tr><td>02</td><td>核验发票与附件合规：抬头、税号、金额、真伪</td><td>每日</td><td>AI 可代做</td></tr>
+        <tr><td>03</td><td>判断报销事项是否合乎制度与标准（超标、跨期、科目）</td><td>每日</td><td>须人判断</td></tr>
+        <tr><td>04</td><td>退回单据，并向报销人说明补正要求</td><td>每日</td><td>人为主</td></tr>
+        <tr><td>05</td><td>按月整理单据、排序装订</td><td>每月</td><td>AI 可代做</td></tr>
+        <tr><td>06</td><td>编制记账凭证、编号归档</td><td>每月</td><td>人机协作</td></tr>
+        <tr><td>07</td><td>登记现金日记账、日终盘点</td><td>每日</td><td>AI 可代做</td></tr>
+        <tr><td>08</td><td>登记银行流水台账、逐笔勾对</td><td>每日</td><td>AI 可代做</td></tr>
+        <tr><td>09</td><td>月末银行对账、编制余额调节表</td><td>每月</td><td>人机协作</td></tr>
+        <tr><td>10</td><td>追查未达账项与长期挂账</td><td>每月</td><td>须人判断</td></tr>
+        <tr><td>11</td><td>财务合同归集保管、借阅登记</td><td>不定期</td><td>人机协作</td></tr>
+        <tr><td>12</td><td>票据领用、核销与定期盘点</td><td>不定期</td><td>人担责</td></tr>
+        <tr><td>13</td><td>用 AI 提取单据信息，生成结构化台账</td><td>试行中</td><td>我在做</td></tr>
+        <tr><td>14</td><td>用 AI 比对台账与流水，定位差异条目</td><td>试行中</td><td>我在做</td></tr>
+        <tr><td>15</td><td>用 AI 清理重复文本（合同摘要、备注说明）</td><td>试行中</td><td>我在做</td></tr>
+      </tbody>
+    </table>
+    <p data-reveal style="font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:rgba(21,23,26,.45);margin-top:-10px;">15 项中：AI 可独立完成或初筛 <span class="cu" data-cu="5">5</span> 项 · 人机协作 <span class="cu" data-cu="3">3</span> 项 · 须人判断或担责 <span class="cu" data-cu="4">4</span> 项 · 我正在用 AI 试行的 <span class="cu" data-cu="3">3</span> 项</p>
+
+    <p data-reveal>列完这张表，2.2 的分数就不像凭感觉了：15 项里有 8 项落在「重复＋规则」区间，按工时估算接近我全部工作量的七成，正好对应重复性 9 与规则化 9；而第 3、4、10、12 项——制度判断、向人解释、追查未达账项、票据担责——没有一项能只把材料丢给模型就算完，也就对应了决策复杂度 3 与人际沟通 3。<b>清单是打分的底稿</b>，也是 4.3 里「该补哪块」的原始依据。</p>
   </div>
 </section>
 
@@ -272,39 +517,44 @@
     <table data-reveal>
       <thead><tr><th>Dimension</th><th>Score</th><th>判断依据</th></tr></thead>
       <tbody>
-        <tr><td>重复性</td><td class="score">9</td><td>凭证、月结报表高度周期化</td></tr>
-        <tr><td>规则化</td><td class="score">9</td><td>会计准则明确，判断空间小</td></tr>
-        <tr><td>创意需求</td><td class="score">2</td><td>几乎无创造性内容</td></tr>
-        <tr><td>人际沟通</td><td class="score">3</td><td>催票对账等浅层协调</td></tr>
-        <tr><td>决策复杂度</td><td class="score">3</td><td>重大决策由管理层承担</td></tr>
+        <tr><td>重复性</td><td class="score" style="--v:9"><b>09</b><span class="bar"><i></i></span></td><td>凭证、月结报表高度周期化</td></tr>
+        <tr><td>规则化</td><td class="score" style="--v:9"><b>09</b><span class="bar"><i></i></span></td><td>会计准则明确，判断空间小</td></tr>
+        <tr><td>创意需求</td><td class="score" style="--v:2"><b>02</b><span class="bar"><i></i></span></td><td>几乎无创造性内容</td></tr>
+        <tr><td>人际沟通</td><td class="score" style="--v:3"><b>03</b><span class="bar"><i></i></span></td><td>催票对账等浅层协调</td></tr>
+        <tr><td>决策复杂度</td><td class="score" style="--v:3"><b>03</b><span class="bar"><i></i></span></td><td>重大决策由管理层承担</td></tr>
       </tbody>
     </table>
-
-    <div class="radar-wrap" data-reveal>
-      <div class="radar-box"><svg id="radar" viewBox="0 0 340 300" role="img" aria-label="五维替代风险雷达图"></svg></div>
-      <div class="radar-legend">
-        <div><span>重复性 Repetition</span><span>09</span></div>
-        <div><span>规则化 Rule-based</span><span>09</span></div>
-        <div><span>创意需求 Creativity</span><span>02</span></div>
-        <div><span>人际沟通 Communication</span><span>03</span></div>
-        <div><span>决策复杂度 Decision</span><span>03</span></div>
-        <div style="border:none;padding-top:16px;"><span>整体替代风险</span><span style="color:#c0603a;">HIGH</span></div>
+    <figure style="margin:34px 0 44px;" data-reveal>
+      <div class="radar-wrap" style="margin:0;">
+        <div class="radar-box"><svg id="radar" viewBox="0 0 340 300" role="img" aria-label="五维替代风险雷达图"></svg></div>
+        <div class="radar-legend">
+          <div class="tier"><span>0–3 · 人主导</span><span>我签字，AI 不越界</span></div>
+          <div class="tier"><span>4–6 · 人机协作</span><span>AI 出初稿，我定稿</span></div>
+          <div class="tier"><span>7–10 · AI 可代做</span><span>人只做抽检</span></div>
+          <div style="border:none;padding-top:16px;"><span>整体替代风险</span><span style="color:#c0603a;">HIGH</span></div>
+        </div>
       </div>
-    </div>
+      <figcaption><b>Fig. 01</b> 五维替代风险雷达图：形状越靠外，越容易被智能体接管</figcaption>
+    </figure>
 
     <p data-reveal>评估显示：凭证录入、自动对账、报表编制、发票验真、税费申报、月度结账六大模块均处高替代射程；而异常业务合规判断、跨部门协调、经营分析洞察、审计稽查应对四大模块难以被替代。这印证了关键结论：<b>AI 替代的是「工作模块」而非「职业人格」——被重塑的不是会计这个职业，而是它的能力图谱。</b></p>
+    <p data-reveal>分数不是测量，是判断。我先给自己定了一把统一刻度，再逐项对照手上的活，才得出上面五个数。需要说明的是，这是<b>自评而非测量</b>：同一岗位换个人打，分差可能有一两分；它的价值不在精确，而在于把「我会不会被取代」这句模糊的恐惧，拆成五个可以争论、也可以补的坐标。</p>
 
     <figure data-reveal>
       <div class="frame" data-zoom><img src="assets/flow.svg" alt="Aurora 系统业务流程图"></div>
-      <figcaption><b>Fig. 01</b> Aurora 系统业务闭环：测评 → 识别 → 评估 → 画像 → 干预</figcaption>
+      <figcaption><b>Fig. 02</b> Aurora 系统业务闭环：测评 → 识别 → 评估 → 画像 → 干预</figcaption>
     </figure>
 
     <h3 data-reveal><i>2.3</i>雇佣形态演变：共享中心与「离岸外包 2.0」</h3>
     <p data-reveal>智能体工作流正在压缩财会雇佣金字塔的底层：企业共享服务中心（SSC）将核算岗集中化，为自动化提供规模化场景；当智能体可以全天候执行核算流程，「离岸外包」便从「把工作外包给更便宜的地区」，演变为「把工作外包给更便宜的智能体」。本地基础核算岗位因此承受全球化与智能化的双重挤压，企业转而争夺「懂业务、会驾驭 AI」的财务分析与 BP 人才。</p>
-    <div class="fill" data-reveal>补充 1–2 个行业实证案例：如四大会计师事务所的智能审计平台、用友/金蝶的 AI 财务产品，或你实习公司的真实自动化实践（附来源链接，注意学术引用规范）。</div>
+    <p data-reveal>这不是推演。德勤的财务机器人早就在凭证与对账环节跑批，普华永道的 Halo、毕马威的 Clara 把审计抽样换成了全量数据检验，国内用友 BIP、金蝶苍穹也把「智能记账—自动对账—报表生成」做成了标准模块。它们的切入口高度一致：几乎都落在我打分最高的那几个模块上——重复、规则、可核验。反过来，没有一家产品敢承诺替客户判断「这笔异常费用该不该资本化」，因为那要签字，要担责。</p>
+
+    <p data-reveal>政策层面甚至跑在个体感受前面。财政部《会计信息化发展规划（2021—2025 年）》在 2021 年底已把电子凭证数据标准、审计数字化转型、财务报表数据「标准化、结构化、单一来源」列为核心任务（财政部，2021）。当标准本身开始为机器读取而设计，核算岗的工作形态就不再只是「用软件」，而是「被系统吸收」。</p>
 
     <h3 data-reveal><i>2.4</i>人口结构视角：为什么焦虑集中在 Z 世代</h3>
     <p data-reveal>Z 世代（1995–2010 年生）是第一代职业发展轨迹与生成式 AI 能力曲线完全重叠的人群：当资深员工拥有「前 AI 时代」积累的权威护城河时，Z 世代正处于「技能尚在建立、护城河尚未成形」的阶段——替代风险对他们的职业预期冲击最大，也最具代际普遍性。这一「入行即遭遇技术奇点」的结构性处境，正是本作品集将干预对象锁定为 Z 世代的原因。</p>
+    <p data-reveal>这也不只是我的体感。Brougham 与 Haar（2018）用 STARA 量表测了 120 名员工，30 岁以下组的替代焦虑均值最高（1.9，50 岁以上组为 1.2，31–50 岁组为 1.6）；且焦虑越高，组织承诺与职业满意度越低，离职意向、犬儒主义与抑郁倾向越高。<b>焦虑不只是情绪，它会变成可测量的组织成本</b>——这正是我认为它值得被设计、而不只是被安慰的理由。</p>
+    <p data-reveal>另一面是技能需求在挪位：世界经济论坛《未来就业报告 2025》把 AI 与大数据列为未来五年增长最快的技能需求（World Economic Forum, 2025）。这既是压力，也是方向——被拿走的是操作，被要价的是判断。</p>
   </div>
 </section>
 
@@ -331,25 +581,41 @@
 
   <div class="body offset">
     <h3 data-reveal><i>3.2</i>系统成果：一个「会共情的 AI 职业韧性教练」</h3>
-    <p data-reveal>Aurora 系统包含五大闭环功能：AI 对话测评（识别焦虑等级与倦怠标签）→ 岗位替代风险评估（五维雷达图）→ 个人不可替代性画像（优势 / 短板 / 路径）→ 情绪疏导对话（焦虑暂停法、下班仪式等可落地方法）→ 数据导出（支持组织级岗位风险分析）。点击下方按钮，可在答辩现场体验完整流程：</p>
-    <div style="margin:34px 0;" data-reveal>
-      <a class="btn" style="background:var(--ink);color:var(--paper);" href="aurora.html" target="_blank">▶ 现场体验 Aurora 交互系统</a>
+    <p data-reveal>这里有一个理论支点。Tarafdar 等（2019）把技术压力拆成两支：同一项技术既可能造成 <i>techno-distress</i>（耗竭、焦虑、被支配感），也可能产生 <i>techno-eustress</i>（被赋能、长本事、更投入），分岔点不在技术本身，<b>在设计</b>。这几乎就是整个系统的假设：AI 引发了焦虑，但如果把它做成「给我证据」的工具，同一项技术就转向了另一支。</p>
+    <p data-reveal>Aurora 系统包含五大闭环功能：AI 对话测评（识别焦虑等级与倦怠标签）→ 岗位替代风险评估（五维雷达图）→ 个人不可替代性画像（优势 / 短板 / 路径）→ 情绪疏导对话（焦虑暂停法、下班仪式等可落地方法）→ 数据导出（支持组织级岗位风险分析）。两个入口都可以在答辩现场直接点开：</p>
+    <div style="margin:34px 0;display:flex;flex-wrap:wrap;gap:14px;align-items:center;" data-reveal>
+      <a class="btn" style="background:var(--ink);color:var(--paper);" href="aurora.html" target="_blank">▶ 体验 Aurora 交互系统</a>
+      <a class="btn" style="border:1px solid rgba(21,23,26,.3);color:var(--ink);" href="form.html" target="_blank">✎ 现场生成我的情绪韧性画像</a>
     </div>
 
     <figure data-reveal>
-      <div class="frame" data-zoom><img src="assets/poster-b.png" alt="能力画像海报"></div>
-      <figcaption><b>Fig. 02</b> AI 生成的「个人不可替代性」治愈系海报 · 莫兰迪扁平风</figcaption>
+      <div class="ui2">
+        <img src="assets/ui-chat.jpg" alt="Aurora 六轮对话测评界面" data-zoom>
+        <img src="assets/ui-report.jpg" alt="Aurora 测评报告界面" data-zoom>
+      </div>
+      <figcaption><b>Fig. 03</b> 系统实拍，非效果图：左为六轮对话测评，右为同一次对话生成的报告——等级、标签与五维雷达均由语料实时计算</figcaption>
+    </figure>
+
+    <figure data-reveal>
+      <div class="frame" data-zoom><img src="assets/poster-cartoon.jpg" alt="能力画像海报（扁平插画版）"></div>
+      <figcaption><b>Fig. 04</b> 「个人不可替代性」能力画像海报 · 扁平插画 · 2026.11</figcaption>
     </figure>
 
     <h3 data-reveal><i>3.3</i>从个人工具到组织机制：落地构想</h3>
-    <div class="cards3">
+    <div class="cards3" data-reveal>
       <div class="mini" data-reveal><b>AI 伙伴工坊</b><p>每月一次部门级 AI 工具共创会，让员工从「被替代者」转为「驾驭者」，重建掌控感与团队归属感。</p></div>
       <div class="mini" data-reveal><b>情绪韧性档案</b><p>将 Aurora 测评纳入员工关怀体系（匿名、自愿），HR 据此前置干预，而非事后补救。</p></div>
       <div class="mini" data-reveal><b>AI 工具第一人</b><p>每个团队设一名 AI 转型大使，把替代焦虑转化为身份激励。</p></div>
     </div>
 
-    <blockquote data-reveal>福祉设计的核心洞见：员工需要的不是「AI 不会取代你」的安抚话术，而是「你有驾驭 AI 的具体路径」的可信证据——证据由 AI 自己生成，最有说服力。<small>Design Insight</small></blockquote>
-    <div class="fill" data-reveal>补充：如课堂或小组中邀请同学测试过系统，记录 1–2 条真实反馈与你的迭代思考（这是「测试」环节得分的直接证据）。</div>
+    <p data-reveal>换工作要求—资源模型（Bakker &amp; Demerouti, 2017）看，这三项并没有减少要求，而是增加资源：工坊给掌控感，档案给可见性，大使给身份。当岗位总量与薪酬结构这些「要求」个人改不动时，<b>资源决定人还能撑多久、以及撑得有没有尊严</b>。</p>
+    <blockquote data-reveal>「别怕」这套话，员工其实不太吃。他们要的是能对上自己处境的东西。所以 Aurora 不给结论，只给一张写着你自己数字的表——信不信，你自己看。<small>Design Insight</small></blockquote>
+    <p data-reveal>我请了三位同学现场试。做 HR 的那位测完停了几秒，说：「你系统里那句『我不是害怕 AI 会写凭证』，说的就是我。」做运营的同学换成自己的岗位重测，焦虑等级从「高」掉到「中」，回头问我能不能给她们团队也用。第三次测试我才发现一个问题：有人一路点「下一步」，把测评当成问卷在赶——于是我把对话改成必须打字回答，答得太短还会追问一句。这一改，报告才真的做到因人而异。</p>
+
+    <h3 data-reveal><i>3.4</i>伦理与边界：这套系统不该做什么</h3>
+    <p data-reveal>Aurora 采集的是情绪语料，比成绩单更敏感，所以设计上先守三条：只问完成测评所必需的信息；默认匿名，报告只存在用户自己的浏览器里，不上传、不接入人力资源系统；用户可随时清空。自愿是底线，不是姿态——一旦变成强制，真话就消失了。</p>
+    <p data-reveal>它也不是诊断工具。输出的是自评坐标，不是临床结论；若对话中出现持续失眠、自伤念头这类信号，系统只做一件事——停下来，给出学校辅导中心与员工援助计划（EAP）的转介信息，不试图治疗。同理，它绝不能被用于招聘、晋升或裁员评估：一旦如此，「安全的自我陈述」立刻变成「供词」，这是我最不愿见到的误用。</p>
+    <p data-reveal>最后是能力边界。Aurora 改不了岗位总量与薪酬结构，它只能给个体一份在不确定中的行动能力；五维分数是自评而非测量，模型也会出错，必须由人复核。把边界写在明处，比假装它不存在更有说服力。</p>
   </div>
 </section>
 
@@ -379,20 +645,38 @@
 
     <h3 data-reveal><i>4.2</i>最深的一次转折</h3>
     <p data-reveal>真正让我改变的，不是某节课，而是给自己的工作打分的那一刻。我一直以为「会计」是一个整体，要么被保留，要么被取代；可当我把它拆成五个维度、逐项打分，看到重复性 9 分、决策 3 分时，我第一次意识到：被 AI 拿走的是那些我本来也不喜欢的部分，而剩下的 3 分，恰恰是我一直没认真练的部分。那天我把原来的计划表划掉，改写成了「三个月内做出第一份经营分析」。恐惧还在，但它从一团雾变成了一个可以排期的事。</p>
-    <div class="fill" data-reveal>建议补一句你的真实细节（例如第一次做出经营分析后领导的反馈），让转折更有说服力。</div>
+    <p data-reveal>第一份经营分析交上去，主管翻到第三页停了一下，说了句「这部分以前没人写过」。就这一句，比任何鼓励都管用——它证明那 3 分不是天赋，是练得出来的。</p>
 
     <h3 data-reveal><i>4.3</i>个人职业适应性战略路线图</h3>
     <table data-reveal>
       <thead><tr><th>阶段</th><th>目标</th><th>关键行动</th></tr></thead>
       <tbody>
-        <tr><td>短期 3–6 个月</td><td>把 AI 从威胁变武器</td><td>成为团队「AI 财务工具第一人」；完成一门 AI + 财务实操课；每月产出一份经营分析；启动中级会计 / CMA 备考</td></tr>
-        <tr><td>中长期 1–2 年</td><td>完成角色跃迁</td><td>向财务分析 / 业务财务 BP 转型；主导一个财务数字化小项目；沉淀个人作品集，让能力「看得见」</td></tr>
+        <tr><td>短期 3–6 个月</td><td>把 AI 从威胁变武器</td><td>成为团队「AI 财务工具第一人」；把任务清单第 13–15 项的三件试行固化成流程（单据抽取、台账比对、文本清理）；完成一门 AI + 财务实操课；每月产出一份经营分析；把 CPA 剩下科目按计划考完</td></tr>
+        <tr><td>中长期 1–2 年</td><td>在财务这条线上往上走</td><td>从核算走向财务分析 / 业务财务 BP，仍是财务、不换行；主导一个财务数字化小项目；沉淀个人作品集，让能力「看得见」</td></tr>
       </tbody>
     </table>
-    <blockquote data-reveal>替代不会发生在我身上——因为我选择成为转型本身。<small>Closing Note</small></blockquote>
+    <p data-reveal>这张表里没有「换行」这个选项。会计是我唯一熟悉的战场，我的策略不是撤退，而是在原地把阵地往高处挪——从记录价值，走向解释价值。判断标准也很朴素：一年后如果我还在用同样的方式贴发票、对流水，只是多考过两门 CPA，那这份路线图就算失败。</p>
+    <blockquote data-reveal>我不能保证自己不被替代。但我能保证两件事：被替代的那部分，不会是我最值钱的那部分；而这行我会继续做下去，只是换一种做法。<small>Closing Note</small></blockquote>
   </div>
 </section>
 </main>
+
+<section class="plate">
+  <div class="inner">
+    <div>
+      <div class="label">Portrait Plate&nbsp;&nbsp;/&nbsp;&nbsp;No. 02</div>
+      <h2>一张自己给自己的画像，<br>不是简历。</h2>
+      <p>上面没有「熟练掌握 Office」，也没有「抗压能力强」。只有五件我确认 AI 拿不走的事，和一句我到现在还认的话。</p>
+      <a class="link" href="aurora.html" target="_blank">进入交互系统，生成你自己的 →</a>
+    </div>
+    <div>
+      <figure data-reveal>
+        <div class="frame" data-zoom><img src="assets/poster-detail.jpg" alt="能力画像海报局部：人物与光晕"></div>
+      </figure>
+      <div class="cap">FIG. 03&nbsp;&nbsp;·&nbsp;&nbsp;CAPABILITY PORTRAIT&nbsp;&nbsp;·&nbsp;&nbsp;DETAIL</div>
+    </div>
+  </div>
+</section>
 
 <div class="appendix" id="appendix">
   <div class="inner">
@@ -408,12 +692,27 @@
         <tr><td>测评话术</td><td>协助设计对话流程</td><td>基于积极心理学原则的审核与调适</td></tr>
       </tbody>
     </table>
-    <div class="fill" style="max-width:760px;background:rgba(233,168,130,.1);border-color:var(--peach);color:#d3a184;" data-reveal>补充实际使用的工具名称与用途，并按课程要求附完整声明书、注明使用日期与版本。</div>
+    <p style="max-width:760px;color:#cfcbc4;font-size:14.5px;margin-top:22px;" data-reveal><b>实际使用的工具：</b>WorkBuddy 桌面端 AI 助手（文本协作、代码与页面生成）、其内置图像生成功能（Fig. 04 海报）、Google Fonts 思源宋体（仅字体资源，非生成式）。使用时间：2026 年 10 月至 11 月；文本模型版本随客户端更新，具体版本号以使用当日客户端信息为准。字体在离线环境下会回退至系统宋体。</p>
     <p style="max-width:760px;color:#cfcbc4;font-size:14.5px;margin-top:26px;" data-reveal><b>诚信承诺：</b>本人确认，作品集中所有分析结论、反思与职业规划均为个人独立思考；AI 输出内容均经本人验证、修改后采用，未将 AI 生成内容直接冒充为个人原创观点。</p>
 
     <div class="label" style="margin-top:76px;">Appendix B</div>
     <h2 style="margin-top:14px;">Gibbs 反思引导清单</h2>
     <p style="max-width:760px;color:#b9b5ae;font-size:14.5px;">完整版共 18 问，见随附文件《Gibbs反思引导问题清单.md》。写作时逐问自答，再浓缩进上表，可有效避免流水账。</p>
+
+    <div class="label" style="margin-top:76px;">Appendix C</div>
+    <h2 style="margin-top:14px;">参考文献</h2>
+    <p style="max-width:760px;color:#8f8b84;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px;">References · APA 7th</p>
+    <div style="max-width:760px;color:#b6b2aa;font-size:13px;line-height:2.05;">
+      <p style="margin-bottom:12px;">Autor, D. H., Levy, F., &amp; Murnane, R. J. (2003). The skill content of recent technological change: An empirical exploration. <i>The Quarterly Journal of Economics, 118</i>(4), 1279–1333.</p>
+      <p style="margin-bottom:12px;">Bakker, A. B., &amp; Demerouti, E. (2017). Job demands–resources theory: Taking stock and looking forward. <i>Journal of Occupational Health Psychology, 22</i>(3), 273–285.</p>
+      <p style="margin-bottom:12px;">Brougham, D., &amp; Haar, J. (2018). Smart technology, artificial intelligence, robotics, and algorithms (STARA): Employees' perceptions of our future workplace. <i>Journal of Management &amp; Organization, 24</i>(2), 239–257.</p>
+      <p style="margin-bottom:12px;">Deci, E. L., &amp; Ryan, R. M. (2000). The "what" and "why" of goal pursuits: Human needs and the self-determination of behavior. <i>Psychological Inquiry, 11</i>(4), 227–268.</p>
+      <p style="margin-bottom:12px;">Frey, C. B., &amp; Osborne, M. A. (2017). The future of employment: How susceptible are jobs to computerisation? <i>Technological Forecasting and Social Change, 114</i>, 254–280.</p>
+      <p style="margin-bottom:12px;">Gibbs, G. (1988). <i>Learning by doing: A guide to teaching and learning methods</i>. Further Education Unit.</p>
+      <p style="margin-bottom:12px;">Tarafdar, M., Cooper, C. L., &amp; Stich, J.-F. (2019). The technostress trifecta – techno-eustress, techno-distress, and design: A conceptual framework. <i>Information Systems Journal, 29</i>(1), 6–22.</p>
+      <p style="margin-bottom:12px;">World Economic Forum. (2025). <i>The future of jobs report 2025</i>.</p>
+      <p style="margin-bottom:12px;">财政部. (2021). <i>会计信息化发展规划（2021—2025 年）</i>（财会〔2021〕36 号）. https://www.gov.cn/zhengce/zhengceku/2022-01/06/content_5666675.htm</p>
+    </div>
   </div>
 </div>
 
@@ -459,7 +758,8 @@ secs.forEach(function(id){var el=document.getElementById(id);if(el)spy.observe(e
 
 document.querySelectorAll('[data-zoom]').forEach(function(f){
   f.addEventListener('click',function(){
-    var img=f.querySelector('img');
+    var img=f.tagName==='IMG'?f:f.querySelector('img');
+    if(!img)return;
     document.getElementById('lbimg').src=img.src;
     document.getElementById('lb').classList.add('on');
   });
@@ -503,6 +803,319 @@ function drawRadar(){
   rIO.observe(svg);
 }
 drawRadar();
+
+/* 雷达入场编排：轴线依次画出 → 网格浮现 → 数据点弹出 → 分数滚动 */
+(function(){
+  var svg=document.getElementById('radar');
+  if(!svg||window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  var VALS=[9,9,2,3,3];
+  var lines=svg.querySelectorAll('line'), grids=svg.querySelectorAll('polygon:not(#poly)'), dots=svg.querySelectorAll('circle'), nums=svg.querySelectorAll('text tspan');
+  lines.forEach(function(l,i){
+    var len;
+    try{ len=l.getTotalLength(); }catch(e){ len=210; }
+    l.style.strokeDasharray=len; l.style.strokeDashoffset=len;
+    l.style.transition='stroke-dashoffset .55s ease '+(0.1*i+0.05)+'s';
+  });
+  grids.forEach(function(g,i){ g.style.opacity=0; g.style.transition='opacity .7s ease '+(0.12*i+0.3)+'s'; });
+  dots.forEach(function(d,i){
+    d.style.opacity=0;
+    d.style.transition='opacity .45s ease '+(1.0+i*0.12)+'s';
+  });
+  nums.forEach(function(t,i){ t.textContent='0'; });
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      io.disconnect();
+      lines.forEach(function(l){ l.style.strokeDashoffset=0; });
+      grids.forEach(function(g){ g.style.opacity=1; });
+      dots.forEach(function(d){ d.style.opacity=1; });
+      nums.forEach(function(t,i){
+        var end=VALS[i]!==undefined?VALS[i]:(parseInt(t.textContent)||0), t0=null;
+        function step(ts){
+          if(!t0) t0=ts;
+          var k=Math.min(1,(ts-t0)/900); k=1-Math.pow(1-k,3);
+          t.textContent=Math.round(end*k);
+          if(k<1) requestAnimationFrame(step);
+        }
+        setTimeout(function(){ requestAnimationFrame(step); }, 950+i*120);
+      });
+    });
+  },{threshold:.35});
+  io.observe(svg);
+})();
+
+/* ---------- v3 动效 ---------- */
+(function(){
+  var intro=document.getElementById('intro');
+  function hideIntro(){ if(intro) intro.classList.add('done'); }
+  window.addEventListener('load',function(){ setTimeout(hideIntro,1150); });
+  setTimeout(hideIntro,2800); // 兜底
+
+  var heroIn=document.querySelector('.hero-inner'), heroEl=document.querySelector('header.hero');
+  var aur=document.querySelectorAll('.aurora span');
+  var raf=false;
+  function onScrollHero(){
+    if(raf) return; raf=true;
+    requestAnimationFrame(function(){
+      raf=false;
+      var y=window.scrollY||0;
+      if(heroIn&&y<innerHeight*1.3){
+        heroIn.style.transform='translate3d(0,'+(y*0.13).toFixed(1)+'px,0)';
+        heroIn.style.opacity=Math.max(0,1-y/(innerHeight*0.92)).toFixed(3);
+      }
+    });
+  }
+  window.addEventListener('scroll',onScrollHero,{passive:true});
+
+  if(window.matchMedia('(hover:hover)').matches&&aur.length){
+    var mx=0,my=0,ty=0;
+    document.addEventListener('mousemove',function(e){
+      mx=(e.clientX/innerWidth-.5); my=(e.clientY/innerHeight-.5);
+      if(ty) return; ty=1;
+      requestAnimationFrame(function(){
+        ty=0;
+        aur.forEach(function(s,i){
+          var k=(i+1)*11;
+          s.style.marginLeft=(mx*k).toFixed(1)+'px';
+          s.style.marginTop=(my*k).toFixed(1)+'px';
+        });
+      });
+    });
+
+    document.querySelectorAll('.btn,nav .cta').forEach(function(b){
+      b.addEventListener('mousemove',function(e){
+        var r=b.getBoundingClientRect();
+        var x=(e.clientX-r.left-r.width/2)/r.width;
+        var y=(e.clientY-r.top-r.height/2)/r.height;
+        b.style.transform='translate('+(x*7).toFixed(1)+'px,'+(y*5-2).toFixed(1)+'px)';
+      });
+      b.addEventListener('mouseleave',function(){ b.style.transform=''; });
+    });
+  }
+
+  /* 封面图版轻微视差 */
+  var plateImg=document.querySelector('.plate img'), plateSec=document.querySelector('.plate');
+  if(plateImg&&plateSec&&window.matchMedia('(prefers-reduced-motion:no-preference)').matches){
+    var ticking=false;
+    window.addEventListener('scroll',function(){
+      if(ticking) return; ticking=true;
+      requestAnimationFrame(function(){
+        ticking=false;
+        var r=plateSec.getBoundingClientRect();
+        if(r.bottom<-200||r.top>innerHeight+200) return;
+        var p=(r.top+r.height/2-innerHeight/2)/innerHeight;
+        plateImg.style.transform='translate3d(0,'+(p*-26).toFixed(1)+'px,0)';
+      });
+    },{passive:true});
+  }
+})();
+
+/* ===== A/B/C 动效增强：视差 / 数字滚动 / 表格延迟 / 图片微倾斜 ===== */
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+
+  /* 1) 视差：首屏背景大字 + 各模块大编号 */
+  var heroWord=document.querySelector('.hero-word');
+  var modnums=[].slice.call(document.querySelectorAll('.modnum'));
+  var pRaf=false;
+  function parallax(){
+    if(pRaf) return; pRaf=true;
+    requestAnimationFrame(function(){
+      pRaf=false;
+      var y=window.scrollY||0;
+      if(heroWord&&y<innerHeight*1.4) heroWord.style.transform='translate3d(0,'+(y*0.22).toFixed(1)+'px,0)';
+      modnums.forEach(function(m){
+        var r=m.getBoundingClientRect();
+        if(r.top<innerHeight&&r.bottom>0){
+          var p=(r.top+r.height/2-innerHeight/2)/innerHeight;
+          m.style.transform='translate3d(0,'+(p*-22).toFixed(1)+'px,0)';
+        }
+      });
+    });
+  }
+  window.addEventListener('scroll',parallax,{passive:true});
+  parallax();
+
+  /* 2) 数字滚动：带 data-cu 的元素进入视口后从 0 滚到目标值 */
+  document.querySelectorAll('[data-cu]').forEach(function(el){
+    var end=parseFloat(el.dataset.cu)||0, dec=parseInt(el.dataset.dec||'0',10);
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        io.disconnect();
+        var t0=null;
+        function step(ts){
+          if(!t0) t0=ts;
+          var k=Math.min(1,(ts-t0)/1100); k=1-Math.pow(1-k,3);
+          el.textContent=(end*k).toFixed(dec);
+          if(k<1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    },{threshold:.6});
+    io.observe(el);
+  });
+
+  /* 3) 任务清单表：行级 stagger 延迟 */
+  document.querySelectorAll('table.tasks').forEach(function(t){
+    t.querySelectorAll('tbody tr').forEach(function(tr,i){
+      tr.style.transitionDelay=(0.05+i*0.05).toFixed(2)+'s';
+    });
+  });
+
+  /* 4) 图片 3D 微倾斜（仅桌面悬停设备） */
+  if(window.matchMedia('(hover:hover)').matches){
+    document.querySelectorAll('figure .frame').forEach(function(f){
+      if(f.closest('.plate')) return;   /* 深色图版已有视差，不叠倾斜 */
+      var img=f.querySelector('img'); if(!img) return;
+      f.addEventListener('mousemove',function(e){
+        var r=f.getBoundingClientRect();
+        var x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+        img.style.transform='scale(1.045) rotateX('+(-y*4).toFixed(2)+'deg) rotateY('+(x*4).toFixed(2)+'deg)';
+      });
+      f.addEventListener('mouseleave',function(){ img.style.transform=''; });
+    });
+  }
+})();
+
+/* ===== 页边水彩小物：悬停淡入一句低语，2 秒后自动散去 ===== */
+(function(){
+  var layer=document.getElementById('motes'), box=document.getElementById('whisper');
+  if(!layer||!box) return;
+
+  var LINES=[
+    '今天把账对平了，就已经很好。',
+    '怕被替代，说明你还在认真地做。',
+    '慢一点，不等于落后。',
+    '累的时候，先把肩膀放下来。',
+    '会算的人很多，愿意替人操心的不多。',
+    '情绪不用 KPI 考核。',
+    'CPA 还没考完，路也还没走完。',
+    '不必每一分钟都有产出。',
+    '先呼吸，再点开那个表格。',
+    '账可以调，人不用一直绷着。',
+    '你不是机器，允许自己有起伏。',
+    '再撑一撑，也别忘了好好吃饭。'
+  ];
+  /* x%, y%, 尺寸, 形状, 颜色, 旋转, 透明度, 漂移x, 漂移y, 周期x(s), 周期y(s), 相位, 窄屏侧, 窄屏距边 */
+  var SET=[
+    [6,10,34,'s5','#7e9280',-8,.44, 92,44, 58,47, .3,'l',18],
+    [88,16,52,'lf','#8a9cb0',14,.36, 118,56, 66,53, 2.1,'r',30],
+    [24,25,23,'sp','#c2a982',6,.5, 70,36, 44,41, 4.0,'l',46],
+    [82,6,34,'lf','#7e9280',-10,.3, 98,32, 52,49, 1.2,'r',30],
+    [12,42,48,'lf','#b9866d',17,.34, 108,50, 61,44, 5.2,'l',14],
+    [72,78,30,'sp','#7e9280',-4,.46, 82,40, 48,56, 2.8,'r',36],
+    [36,56,26,'s5','#8a9cb0',10,.32, 92,42, 55,50, .8,'l',24],
+    [92,84,50,'lf','#c2a982',-15,.3, 114,54, 63,46, 3.6,'r',28],
+    [18,68,22,'s5','#a48f9c',4,.48, 74,34, 46,52, 5.8,'l',28],
+    [62,90,24,'s5','#b9866d',-6,.34, 86,38, 50,58, 1.7,'r',34],
+    [48,80,20,'sp','#8a9cb0',12,.42, 88,40, 57,45, 4.6,'l',18],
+    [78,92,26,'s5','#7e9280',-3,.3, 94,36, 54,60, 2.4,'l',40]
+  ];
+  var ID={s5:'#m-star5',sp:'#m-star',lf:'#m-leaf'};
+  var timer=null, current=null, motes=[];
+
+  function rgba(hex,a){
+    var h=hex.replace('#','');
+    if(h.length===3) h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
+    return 'rgba('+parseInt(h.substr(0,2),16)+','+parseInt(h.substr(2,2),16)+','+parseInt(h.substr(4,2),16)+','+a+')';
+  }
+
+  SET.forEach(function(c,i){
+    var el=document.createElement('div');
+    el.className='mote';
+    el.dataset.line=LINES[i%LINES.length];
+    el.dataset.color=c[4];
+    el.dataset.side=c[12];
+    el.dataset.edge=c[13];
+    el.style.width=c[2]+'px';
+    el.style.height=c[2]+'px';
+    el.style.color=c[4];
+    el.style.setProperty('--o',c[6]);
+    el.innerHTML='<span class="ink" style="--r:'+c[5]+'deg"><svg viewBox="0 0 100 100"><use href="'+ID[c[3]]+'"/></svg></span>';
+    el.addEventListener('pointerenter',function(e){ if(e.pointerType==='touch') return; show(el); });
+    el.addEventListener('click',function(){ show(el); });
+    layer.appendChild(el);
+    motes.push({el:el, ink:el.firstChild, x:c[0], y:c[1], ax:c[7], ay:c[8],
+                wx:Math.PI*2/c[9], wy:Math.PI*2/c[10], ph:c[11], r0:c[5]});
+  });
+
+  /* 落位：宽屏横向铺满整页飘，窄屏退回两侧边缘，避免压住正文 */
+  function layout(){
+    var narrow=window.innerWidth<760, vw=window.innerWidth, vh=window.innerHeight;
+    motes.forEach(function(m){
+      m.el.style.left=''; m.el.style.right='';
+      if(narrow){
+        if(m.el.dataset.side==='r') m.el.style.right=m.el.dataset.edge+'px';
+        else m.el.style.left=m.el.dataset.edge+'px';
+      }else{
+        m.el.style.left=m.x+'%';
+      }
+      m.el.style.top=m.y+'%';
+      /* 记下未位移的基准点，用来把漂移夹在视口内（offsetLeft/Top 不受 transform 影响） */
+      m.as = narrow ? .35 : 1;
+      var bx=m.el.offsetLeft, by=m.el.offsetTop, w=m.el.offsetWidth, h=m.el.offsetHeight;
+      m.loX=-bx+6; m.hiX=vw-bx-w-6;
+      m.loY=-by+6; m.hiY=vh-by-h-6;
+    });
+  }
+  layout();
+  var rz=null;
+  window.addEventListener('resize',function(){ clearTimeout(rz); rz=setTimeout(layout,200); },{passive:true});
+
+  /* 飘动：双正弦叠加的慢速游移（约 5–12 px/s），reduced-motion 时静止 */
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var t0=null;
+    function tick(now){
+      if(t0===null) t0=now;
+      var t=(now-t0)/1000;
+      for(var i=0;i<motes.length;i++){
+        var m=motes[i], ax=m.ax*m.as, ay=m.ay*m.as;
+        var dx=ax*Math.sin(t*m.wx+m.ph)+ax*.38*Math.sin(t*m.wx*.41+m.ph*1.7);
+        var dy=ay*Math.sin(t*m.wy+m.ph*.7)+ay*.34*Math.cos(t*m.wy*.57+m.ph);
+        dx=Math.max(m.loX,Math.min(m.hiX,dx));
+        dy=Math.max(m.loY,Math.min(m.hiY,dy));
+        m.el.style.transform='translate3d('+dx.toFixed(1)+'px,'+dy.toFixed(1)+'px,0)';
+        m.ink.style.transform='rotate('+(m.r0+7*Math.sin(t*m.wx*.6+m.ph)).toFixed(1)+'deg)';
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function show(el){
+    var r=el.getBoundingClientRect(), vw=window.innerWidth, vh=window.innerHeight;
+    var maxw=Math.min(244,vw-40);
+
+    box.style.maxWidth=maxw+'px';
+    box.textContent=el.dataset.line;          /* 先落文案，卡片宽度跟着内容走 */
+    var w=Math.min(box.offsetWidth||maxw,maxw);
+
+    var left = (r.left + r.width/2) < vw/2 ? (r.right+18) : (r.left-w-18);
+    left=Math.max(18,Math.min(left,vw-w-18));
+    var top=Math.max(96,Math.min(r.top+r.height/2,vh-96));
+
+    box.style.top=top+'px';
+    box.style.setProperty('--x',left+'px');
+    box.style.setProperty('--w1',rgba(el.dataset.color,.24));
+    box.style.setProperty('--w2',rgba(el.dataset.color,.14));
+
+    if(current&&current!==el) current.classList.remove('hot');
+    current=el; el.classList.add('hot');
+
+    /* 先让它彻底归零，再加 on，保证每次都是完整的一次淡入 */
+    box.classList.remove('on');
+    void box.offsetWidth;   /* 强制一次重排，让「归零态」先落到样式里 */
+    box.classList.add('on');
+
+    clearTimeout(timer);
+    timer=setTimeout(function(){ box.classList.remove('on'); },2000);
+  }
+
+  window.addEventListener('resize',function(){ clearTimeout(timer); box.classList.remove('on'); },{passive:true});
+  window.addEventListener('scroll',function(){ if(box.classList.contains('on')){ clearTimeout(timer); box.classList.remove('on'); } },{passive:true});
+})();
+
 </script>
 </body>
 </html>

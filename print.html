@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>ePortfolio 打印归档版 · 以AI疗愈AI焦虑</title>
+<title>以 AI 疗愈 AI 焦虑 · INT6140 ePortfolio 终版</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -15,71 +15,174 @@
     --accent:#6a6bbf;
   }
   @page{size:A4;margin:17mm 16mm 18mm;}
+  @page :first{margin-bottom:7mm;}
   *{margin:0;padding:0;box-sizing:border-box;}
   body{background:#f2f0ec;color:var(--body);font-family:var(--sans);font-weight:300;line-height:1.9;-webkit-font-smoothing:antialiased;}
   .sheet{background:#fff;max-width:820px;margin:0 auto;padding:64px 68px 70px;box-shadow:0 2px 30px rgba(0,0,0,.06);}
 
-  .cover{min-height:92vh;display:flex;flex-direction:column;justify-content:space-between;padding-bottom:20px;}
+  /* ---------- COVER ---------- */
+  .cover{display:flex;flex-direction:column;justify-content:space-between;min-height:96vh;padding-bottom:8mm;}
   .cover .top{font-family:var(--mono);font-size:8.5pt;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);line-height:2.2;}
-  .cover h1{font-family:var(--serif);font-weight:300;font-size:34pt;line-height:1.35;letter-spacing:.01em;color:var(--ink);margin:40px 0 22px;}
+  .cover h1{font-family:var(--serif);font-weight:300;font-size:33pt;line-height:1.36;letter-spacing:.01em;color:var(--ink);margin:44px 0 24px;}
   .cover .en{font-family:var(--serif);font-style:italic;font-size:11pt;color:var(--muted);line-height:1.9;max-width:520px;}
-  .cover .rule{height:1px;background:var(--line);margin:44px 0 26px;}
-  .cover .kv{display:grid;grid-template-columns:1fr 1fr;gap:16px 30px;max-width:520px;}
+
+  .cover .rule{height:1px;background:var(--line);margin:40px 0 24px;}
+  .cover .kv{display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;max-width:520px;}
   .cover .kv div{font-size:9.5pt;color:var(--muted);}
   .cover .kv b{display:block;font-family:var(--mono);font-size:7.5pt;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);font-weight:400;margin-bottom:3px;}
-  .cover .foot{font-family:var(--mono);font-size:8pt;letter-spacing:.18em;color:var(--faint);border-top:1px solid var(--line-soft);padding-top:14px;display:flex;justify-content:space-between;}
 
-  .toc{margin-top:8px;}
+  .livebox{margin-top:26px;display:flex;gap:16px;align-items:center;border:1px solid var(--line);padding:14px 16px;max-width:520px;background:#fcfbf9;}
+  .livebox img{width:76px;height:76px;display:block;flex:0 0 76px;}
+  .livebox .t{font-family:var(--mono);font-size:6.8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:5px;}
+  .livebox a{font-family:var(--mono);font-size:8.6pt;color:var(--ink);text-decoration:none;border-bottom:1px solid #c9c4bb;word-break:break-all;letter-spacing:.01em;}
+  .livebox .note{display:block;font-size:8.2pt;color:var(--muted);margin-top:6px;line-height:1.65;}
+
+  .cover .foot{margin-top:22px;font-family:var(--mono);font-size:7.8pt;letter-spacing:.16em;color:var(--faint);border-top:1px solid var(--line-soft);padding-top:12px;display:flex;justify-content:space-between;}
+
+  /* ---------- TOC ---------- */
   .toc div{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line-soft);font-size:10.5pt;}
   .toc div span:first-child{font-family:var(--serif);color:var(--ink);}
   .toc div span:last-child{font-family:var(--mono);font-size:8.5pt;letter-spacing:.12em;color:var(--faint);}
 
   section{margin-top:26px;}
   section.pb{page-break-before:always;}
-  .modhead{border-top:1px solid var(--ink);padding-top:18px;margin-bottom:26px;}
+  .modhead{border-top:1px solid var(--ink);padding-top:18px;margin-bottom:24px;page-break-after:avoid;}
   .modhead .label{font-family:var(--mono);font-size:7.5pt;letter-spacing:.26em;text-transform:uppercase;color:var(--faint);}
-  .modhead h2{font-family:var(--serif);font-size:17pt;font-weight:400;line-height:1.5;color:var(--ink);margin-top:8px;}
-  .modhead .en{font-family:var(--serif);font-style:italic;font-size:9.5pt;color:var(--faint);margin-top:6px;}
+  .modhead h2{font-family:var(--serif);font-size:16.5pt;font-weight:400;line-height:1.5;color:var(--ink);margin-top:8px;}
+  .modhead .en{font-family:var(--serif);font-style:italic;font-size:9.3pt;color:var(--faint);margin-top:6px;}
 
-  h3{font-family:var(--serif);font-size:11.5pt;font-weight:500;color:var(--ink);margin:24px 0 6px;display:flex;gap:10px;align-items:baseline;}
+  h3{font-family:var(--serif);font-size:11.5pt;font-weight:500;color:var(--ink);margin:22px 0 6px;display:flex;gap:10px;align-items:baseline;page-break-after:avoid;}
   h3 i{font-family:var(--mono);font-style:normal;font-size:8pt;letter-spacing:.14em;color:var(--faint);}
-  p{font-size:10.5pt;line-height:1.95;margin:10px 0;color:var(--body);text-align:justify;}
-  p.lead{font-size:11.5pt;line-height:1.9;color:var(--ink);}
+  p{font-size:10.4pt;line-height:1.87;margin:8px 0;color:var(--body);text-align:justify;orphans:2;widows:2;}
+  p.lead{font-size:11.3pt;line-height:1.85;color:var(--ink);}
   b{font-weight:500;color:var(--ink);}
-  blockquote{font-family:var(--serif);font-size:12pt;line-height:1.9;color:var(--ink);border-left:2px solid var(--line);padding-left:18px;margin:22px 0;}
+  blockquote{font-family:var(--serif);font-size:11.5pt;line-height:1.85;color:var(--ink);border-left:2px solid var(--line);padding-left:18px;margin:20px 0;page-break-inside:avoid;}
 
-  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:9.5pt;}
-  th{font-family:var(--mono);font-size:7.5pt;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);text-align:left;font-weight:400;padding:0 12px 8px 0;border-bottom:1px solid var(--ink);}
-  td{padding:9px 12px 9px 0;border-bottom:1px solid var(--line-soft);vertical-align:top;line-height:1.75;}
-  td:first-child{font-family:var(--serif);font-size:9.5pt;color:var(--ink);}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:9.3pt;page-break-inside:avoid;}
+  th{font-family:var(--mono);font-size:7.3pt;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);text-align:left;font-weight:400;padding:0 12px 8px 0;border-bottom:1px solid var(--ink);}
+  td{padding:6px 12px 6px 0;border-bottom:1px solid var(--line-soft);vertical-align:top;line-height:1.72;}
+  td:first-child{font-family:var(--serif);font-size:9.3pt;color:var(--ink);}
 
-  figure{margin:22px 0;page-break-inside:avoid;}
-  figure img{width:100%;max-height:96mm;object-fit:contain;display:block;border:1px solid var(--line-soft);background:#fff;}
-  figcaption{font-family:var(--mono);font-size:7.5pt;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-top:8px;display:flex;gap:10px;}
+  figure{margin:14px 0;page-break-inside:avoid;}
+  figure img{width:100%;max-height:88mm;object-fit:contain;display:block;border:1px solid var(--line-soft);background:#fff;}
+  figcaption{font-family:var(--mono);font-size:7.3pt;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-top:8px;display:flex;gap:10px;}
   figcaption b{color:var(--muted);font-weight:400;}
 
-  .radarbox{display:flex;gap:28px;align-items:center;margin:18px 0;page-break-inside:avoid;}
-  .radarbox svg{width:250px;flex:0 0 250px;}
-  .rl div{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line-soft);font-size:9.5pt;}
-  .rl div span:last-child{font-family:var(--mono);}
+  .radarfig{margin:8px 0 10px;page-break-inside:avoid;}
+  .rwrap{display:grid;grid-template-columns:70mm 1fr;gap:8mm;align-items:center;}
+  .rwrap svg{width:70mm;height:auto;display:block;}
+  .rkey{font-size:8.8pt;line-height:1.55;color:var(--muted);}
+  .rkey div{display:grid;grid-template-columns:12mm 20mm 1fr;align-items:baseline;gap:2mm;padding:5px 0;border-top:1px solid var(--line-soft);}
+  .rkey div b{font-family:var(--mono);font-size:8.2pt;color:var(--ink);font-weight:400;letter-spacing:.02em;}
+  .rkey div span{color:var(--ink);}
+  .rkey div i{font-style:normal;font-size:8.2pt;}
+  .rkey .rk{display:flex;justify-content:space-between;border-bottom:1px solid var(--line-soft);color:#a8552f;padding-top:7px;}
+  .rkey .rk span{color:#a8552f;font-family:var(--mono);letter-spacing:.08em;}
+  .radarfig figcaption{font-size:7.8pt;color:var(--muted);line-height:1.6;margin-top:8px;display:block;}
 
-  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:18px 0;}
-  .step{background:#fff;padding:12px 11px;}
-  .step .n{font-family:var(--mono);font-size:6.8pt;letter-spacing:.12em;color:var(--faint);}
-  .step b{display:block;font-family:var(--serif);font-size:10pt;margin:6px 0 4px;color:var(--ink);}
-  .step p{font-size:8.2pt;line-height:1.65;color:var(--muted);margin:0;text-align:left;}
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:16px 0;page-break-inside:avoid;}
+  .step{background:#fff;padding:11px 10px;}
+  .step .n{font-family:var(--mono);font-size:6.5pt;letter-spacing:.1em;color:var(--faint);}
+  .step b{display:block;font-family:var(--serif);font-size:9.8pt;margin:6px 0 4px;color:var(--ink);}
+  .step p{font-size:8pt;line-height:1.62;color:var(--muted);margin:0;text-align:left;}
 
-  .fill{margin:14px 0;padding:12px 16px;border-left:2px solid #cfa27e;background:#faf4ee;font-size:9pt;line-height:1.85;color:#8a6249;}
-  .fill::before{content:"✍ 提交前补充 · ";font-weight:500;}
+  .uifig{margin:14px 0 6px;page-break-inside:avoid;}
+  .ui2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4mm;}
+  .ui2 img{width:100%;max-width:100%;min-width:0;height:auto;display:block;border:1px solid #e3ded5;}
+  .uifig figcaption{font-size:7.6pt;line-height:1.68;color:var(--muted);margin-top:7px;text-align:left;}
 
-  .mini3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:16px 0;}
+  .mini3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:10px 0;page-break-inside:avoid;}
   .mini3 div{border-top:1px solid var(--line);padding-top:10px;}
-  .mini3 b{display:block;font-family:var(--serif);font-size:10pt;margin-bottom:5px;}
-  .mini3 p{font-size:8.8pt;line-height:1.75;color:var(--muted);margin:0;}
+  .mini3 b{display:block;font-family:var(--serif);font-size:9.8pt;margin-bottom:5px;}
+  .mini3 p{font-size:8.6pt;line-height:1.7;color:var(--muted);margin:0;text-align:left;}
+
+  .linkline{margin:14px 0;padding:11px 14px;border:1px solid var(--line);background:#fcfbf9;font-size:8.8pt;color:var(--muted);page-break-inside:avoid;}
+  .linkline b{font-family:var(--mono);font-size:7pt;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);font-weight:400;display:block;margin-bottom:4px;}
+  .linkline a{font-family:var(--mono);font-size:8.6pt;color:var(--ink);text-decoration:none;border-bottom:1px solid #c9c4bb;}
+
+  .ref{font-size:9.1pt;line-height:1.58;padding-left:22px;text-indent:-22px;margin:7px 0;text-align:left;}
+
+  table.tasks{margin:12px 0 8px;table-layout:fixed;width:100%;page-break-inside:auto;break-inside:auto;}
+  table.tasks thead{display:table-header-group;}
+  table.tasks tr{page-break-inside:avoid;break-inside:avoid;}
+  table.tasks th{padding-bottom:6px;}
+  table.tasks td{padding:4.6px 8px 4.6px 0;font-size:8.5pt;line-height:1.45;}
+  table.tasks td:first-child{font-family:var(--mono);font-size:7.2pt;color:var(--faint);letter-spacing:.06em;}
+  table.tasks td:nth-child(3){font-family:var(--mono);font-size:7.4pt;color:var(--muted);letter-spacing:.04em;}
+  table.tasks td:nth-child(4){font-size:7.9pt;color:var(--muted);}
+
+  /* ---- 任务分布堆叠条 ---- */
+  .dist{margin:12px 0 6px;page-break-inside:avoid;}
+  .dist .dbar{display:flex;height:9px;background:#efece6;}
+  .dist .dbar i{display:block;height:100%;}
+  .dist .dbar i.a1{width:33.34%;background:var(--ink);}
+  .dist .dbar i.a2{width:20%;background:#8f8b83;}
+  .dist .dbar i.a3{width:26.66%;background:#cfc9c0;}
+  .dist .dbar i.a4{width:20%;background:var(--accent);}
+  .dist .dleg{display:grid;grid-template-columns:repeat(4,1fr);gap:2mm;margin-top:8px;}
+  .dist .dleg div{font-size:8pt;color:var(--muted);display:flex;align-items:baseline;gap:1.4mm;}
+  .dist .dleg .sw{width:2.4mm;height:2.4mm;flex:0 0 2.4mm;display:block;transform:translateY(.2mm);}
+  .dist .dleg .sw.a1{background:var(--ink);}
+  .dist .dleg .sw.a2{background:#8f8b83;}
+  .dist .dleg .sw.a3{background:#cfc9c0;}
+  .dist .dleg .sw.a4{background:var(--accent);}
+  .dist .dleg b{font-family:var(--mono);font-weight:400;font-size:8.6pt;color:var(--ink);}
+  .dist .dcap{margin-top:7px;font-family:var(--mono);font-size:7.2pt;letter-spacing:.1em;color:var(--faint);}
+
+  /* ---- 反白章：整页深底论点 ---- */
+  .invpage{page-break-before:always;page-break-after:always;background:var(--ink);color:#f2efe9;
+    height:256mm;padding:0 14mm;display:flex;flex-direction:column;justify-content:center;box-sizing:border-box;}
+  .invpage .k{font-family:var(--mono);font-size:7.5pt;letter-spacing:.3em;text-transform:uppercase;color:rgba(242,239,233,.42);border-top:1px solid rgba(242,239,233,.28);padding-top:16px;}
+  .invpage .big{font-family:var(--serif);font-weight:300;font-size:23.5pt;line-height:1.72;letter-spacing:.01em;margin-top:26px;}
+  .invpage .rule{width:30mm;height:1px;background:rgba(242,239,233,.32);margin:24px 0;}
+  .invpage .sub{font-size:10.5pt;line-height:2.05;color:rgba(242,239,233,.62);max-width:122mm;margin:0;}
+  .invpage .foot{margin-top:34mm;font-family:var(--mono);font-size:7.3pt;letter-spacing:.2em;text-transform:uppercase;color:rgba(242,239,233,.34);}
+
+  /* ---- 引言：对比时间条 ---- */
+  .tbar{margin:58mm 0 8px;page-break-inside:avoid;}
+  .tbar .tk{font-family:var(--mono);font-size:7.3pt;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);border-top:1px solid var(--ink);padding-top:10px;margin-bottom:16px;}
+  .tbar .trow{display:grid;grid-template-columns:36mm 1fr;gap:6mm;align-items:center;padding:7px 0;}
+  .tbar .tlab{font-size:9pt;color:var(--ink);text-align:right;line-height:1.5;}
+  .tbar .ttrack{display:flex;align-items:center;gap:8px;}
+  .tbar .ttrack i{display:block;height:11px;background:var(--ink);}
+  .tbar .ttrack i.short{width:2.2mm;}
+  .tbar .ttrack i.long{width:92mm;background:#c9c4bb;}
+  .tbar .ttrack span{font-family:var(--mono);font-size:7.4pt;letter-spacing:.05em;color:var(--muted);white-space:nowrap;}
+  .tbar .tcap{margin-top:14px;font-family:var(--mono);font-size:7.3pt;letter-spacing:.14em;color:var(--faint);}
+
+  /* ---- 结语：大字收束 + 二维码并排 ---- */
+  .closer{margin-top:46px;page-break-inside:avoid;}
+  .closer .cline{width:30mm;height:1px;background:var(--ink);margin-bottom:22px;}
+  .closer .cbig{font-family:var(--serif);font-weight:300;font-size:23pt;line-height:1.7;color:var(--ink);letter-spacing:.01em;}
+  .qrrow{display:flex;align-items:flex-end;justify-content:space-between;gap:12mm;margin-top:104mm;page-break-inside:avoid;}
+  .qrrow .url{font-family:var(--mono);font-size:8.6pt;color:var(--muted);word-break:break-all;line-height:1.9;}
+  .qrrow figure{margin:0;}
+  .qrrow figure img{width:38mm;height:38mm;max-height:none;border:none;}
+  .qrrow figcaption{margin-top:6px;text-align:right;justify-content:flex-end;}
+
+  /* ---- 4.3：三段式时间轴 ---- */
+  .tl{margin:14px 0 6px;}
+  .tl .stage{display:grid;grid-template-columns:24mm 7mm 1fr;gap:0 7mm;page-break-inside:avoid;padding-bottom:24px;}
+  .tl .per{font-family:var(--mono);font-size:7.4pt;letter-spacing:.1em;color:var(--faint);text-align:right;line-height:1.7;padding-top:1px;}
+  .tl .per b{display:block;color:var(--ink);font-weight:400;font-size:8.6pt;}
+  .tl .rail{position:relative;}
+  .tl .rail::before{content:"";position:absolute;left:3mm;top:3mm;bottom:-3mm;width:1px;background:var(--line);}
+  .tl .rail::after{content:"";position:absolute;left:1mm;top:2.2mm;width:2.6mm;height:2.6mm;border-radius:50%;background:var(--ink);}
+  .tl .stage:last-child .rail::before{bottom:auto;height:3mm;}
+  .tl .goal{font-family:var(--serif);font-size:12.5pt;color:var(--ink);margin-bottom:7px;}
+  .tl .cnt p{font-size:9.4pt;line-height:1.85;color:#3a3d42;margin:0;text-align:justify;}
+
+  table.road{table-layout:fixed;}
+  table.road th:nth-child(1),table.road td:nth-child(1){width:21%;}
+  table.road th:nth-child(2),table.road td:nth-child(2){width:19%;}
+
+  .plate{page-break-inside:avoid;}
+  .plate .plabel{font-family:var(--mono);font-size:7.4pt;letter-spacing:.26em;text-transform:uppercase;color:var(--faint);border-top:1px solid var(--ink);padding-top:14px;margin-bottom:18px;}
+  .plate figure img{width:auto;max-height:none;border:none;background:none;}
+  .plate .note{font-size:9.4pt;line-height:1.82;color:var(--muted);margin-top:16px;text-align:justify;}
 
   .appx{page-break-before:always;}
-  .appx .modhead{border-top-color:var(--ink);}
-  .footer-note{margin-top:40px;border-top:1px solid var(--line-soft);padding-top:14px;font-family:var(--mono);font-size:7.5pt;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);display:flex;justify-content:space-between;}
+  .footer-note{margin-top:36px;border-top:1px solid var(--line-soft);padding-top:12px;font-family:var(--mono);font-size:7.3pt;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);display:flex;justify-content:space-between;}
 
   .toolbar{position:fixed;top:16px;right:16px;z-index:50;display:flex;gap:8px;}
   .toolbar button{border:1px solid #d5d0c8;background:#fff;color:#5b574f;border-radius:999px;padding:8px 16px;font-size:12px;cursor:pointer;font-family:var(--sans);}
@@ -89,15 +192,17 @@
     body{background:#fff;}
     .sheet{box-shadow:none;padding:0;max-width:none;}
     .toolbar{display:none;}
-    .cover{min-height:auto;height:100vh;page-break-after:always;}
+    .cover{min-height:272mm;padding-bottom:0;}
+    .cover .rule{margin:34px 0 22px;}
     a{color:inherit;text-decoration:none;}
   }
-  @media(max-width:760px){
+  @media screen and (max-width:760px){
     .sheet{padding:32px 22px;}
-    .cover h1{font-size:24pt;}
+    .cover h1{font-size:23pt;}
     .steps{grid-template-columns:1fr 1fr;}
-    .radarbox{flex-direction:column;align-items:flex-start;}
+    .radarfig svg{width:240px;}
     .mini3{grid-template-columns:1fr;}
+    .livebox{flex-direction:column;align-items:flex-start;}
   }
 </style>
 </head>
@@ -109,69 +214,160 @@
 
 <div class="sheet">
 
-<!-- COVER -->
+<!-- ========== COVER ========== -->
 <div class="cover">
-  <div class="top">The Education University of Hong Kong<br>GIET · INT6140 The Future of Work &amp; Human Resources<br>Individual ePortfolio · Print Archive</div>
+  <div class="top">The Education University of Hong Kong<br>GIET · INT6140 The Future of Work &amp; Human Resources<br>Individual ePortfolio · Final Version</div>
+
   <div>
-    <h1>以 AI 疗愈 AI 焦虑<br>智能体时代 Z 世代财会人的职业韧性重构</h1>
+    <h1>以 AI 疗愈 AI 焦虑<br>智能体时代 Z 世代<br>财会人的职业韧性重构</h1>
     <p class="en">Healing AI Anxiety with AI — Rebuilding Career Resilience for Gen-Z Accountants in the Agentic Era</p>
+
   </div>
+
   <div>
     <div class="rule"></div>
-    <div class="kv">
-      <div><b>Author</b>＿＿＿＿＿＿</div>
-      <div><b>Student ID</b>＿＿＿＿＿＿</div>
-      <div><b>Field</b>财会 · 核算方向</div>
-      <div><b>Date</b>＿＿＿＿＿＿</div>
+
+    <div class="livebox">
+      <img src="assets/qr.png" alt="交互作品集二维码">
+      <div>
+        <div class="t">Live · Interactive Portfolio</div>
+        <a href="https://wwen-wy.github.io/my-website/">https://wwen-wy.github.io/my-website/</a>
+      </div>
     </div>
-    <div class="foot"><span>ePortfolio · 2026</span><span>Interactive version: index.html</span></div>
+
+    <div class="foot"><span>Final Version</span><span>Design Thinking × Agentic AI × Career Resilience</span></div>
   </div>
 </div>
 
-<!-- TOC -->
+<!-- ========== TOC ========== -->
 <section class="pb">
   <div class="modhead">
     <div class="label">Contents</div>
     <h2>目录</h2>
   </div>
   <div class="toc">
-    <div><span>模块一 · 个人职业画像与未来工作哲学</span><span>01</span></div>
-    <div><span>模块二 · 前沿科技深度剖析：智能体工作流重塑财会行业</span><span>02</span></div>
-    <div><span>模块三 · 未来工作场所与员工福祉创新设计</span><span>03</span></div>
-    <div><span>模块四 · 学期反思历程与职业行动路线图</span><span>04</span></div>
-    <div><span>附录 A · 生成式 AI 使用声明</span><span>A</span></div>
-    <div><span>附录 B · Gibbs 反思引导清单（摘要）</span><span>B</span></div>
+    <div><span>引言 · 从那个地铁上的夜晚说起</span><span>03</span></div>
+    <div><span>模块一 · 个人职业画像与未来工作哲学</span><span>04</span></div>
+    <div><span>模块二 · 前沿科技深度剖析：智能体工作流重塑财会行业</span><span>06</span></div>
+    <div><span>模块三 · 员工福祉创新设计：Aurora 系统</span><span>10</span></div>
+    <div><span>模块四 · 反思历程与职业行动路线图</span><span>12</span></div>
+    <div><span>结语</span><span>14</span></div>
+    <div><span>附录 A · 生成式 AI 使用声明</span><span>15</span></div>
+    <div><span>附录 B · 参考文献</span><span>16</span></div>
+    <div><span>附录 C · 制品索引</span><span>16</span></div>
   </div>
-  <blockquote style="margin-top:34px;font-size:10.5pt;color:var(--muted);">本作品集的核心命题只有一句：既然替代焦虑由 AI 引发，疗愈它的最有力工具，恰恰也是 AI。</blockquote>
+  <blockquote style="margin-top:32px;font-size:10.8pt;color:var(--muted);">本作品集的核心命题只有一句：既然替代焦虑由 AI 引发，疗愈它最有力的工具，恰恰也是 AI。</blockquote>
+  <div class="linkline">
+    <b>Online Version</b>
+    <a href="https://wwen-wy.github.io/my-website/">https://wwen-wy.github.io/my-website/</a>
+    <span style="display:block;margin-top:4px;">本 PDF 为归档版；交互系统（六轮对话测评、动态报告、情绪疏导）请于上述网址体验。</span>
+  </div>
 </section>
 
-<!-- M1 -->
+<!-- ========== 引言 ========== -->
+<section class="pb">
+  <div class="modhead">
+    <div class="label">Prologue</div>
+    <h2>引言 · 从那个地铁上的夜晚说起</h2>
+    <div class="en">Why This Portfolio Exists</div>
+  </div>
+  <p class="lead">我不是害怕 AI 会写凭证。我害怕的是：当它写得比我快、比我准、还不用加班时，我这些年练出来的东西还算不算数。</p>
+  <p>十月的一个周二，我第一次看着系统在十几秒里生成一整个月的费用凭证；同一天晚上，我手工对账到十点。回家的地铁上刷到「AI 将取代数百万会计」，我把手机扣在腿上，很久没说话。这半年我渐渐明白：替代焦虑不只是技术问题，也是心理与制度问题。而它最吊诡的地方在于——既然焦虑由 AI 引发，最可能疗愈它的工具，恰恰也是 AI。</p>
+
+  <div class="tbar">
+    <div class="tk">That Tuesday&nbsp;&nbsp;·&nbsp;&nbsp;同一件事的两种时长</div>
+    <div class="trow">
+      <div class="tlab">系统生成整月费用凭证</div>
+      <div class="ttrack"><i class="short"></i><span>十几秒</span></div>
+    </div>
+    <div class="trow">
+      <div class="tlab">我手工对账</div>
+      <div class="ttrack"><i class="long"></i><span>到晚上十点</span></div>
+    </div>
+    <div class="tcap">两条线的长度差，就是这份作品集的起点。</div>
+  </div>
+</section>
+
+<!-- ========== M1 ========== -->
 <section class="pb">
   <div class="modhead">
     <div class="label">Module One</div>
     <h2>个人职业画像与未来工作哲学</h2>
     <div class="en">Personal Profiling &amp; Future-Ready Philosophy</div>
   </div>
-  <p class="lead">我是一名 26 岁的财会从业者，属于与生成式 AI「同场入场」的 Z 世代：我们的职业锚定期，恰好与 AI 能力爆发期完全重叠。</p>
-  <p>日常工作中，我大量处理凭证录入、报表编制与对账等高重复性任务；与此同时，「AI 财务软件会否取代我」的担忧、加班与精神内耗，构成了我这一代白领真实而沉默的心理底色。这份作品集，正是从这份沉默里长出来的。</p>
-  <div class="fill">补充一段你观察或亲历的「AI 进入工作流」的具体场景，以及它带给你的情绪冲击。</div>
-  <h3><i>1.1</i>我的未来工作哲学</h3>
-  <blockquote>AI 不应是悬在员工头顶的「淘汰倒计时」，而应成为员工的「成长外骨骼」。人的价值不会消失，而是向共情、判断、创造与责任承担迁移——职业韧性的本质，不是逃离技术浪潮，而是学会骑上浪板。</blockquote>
-  <p>基于这一哲学，本作品集提出核心命题：<b>既然 AI 替代焦虑由 AI 引发，那么疗愈它最有力的工具，恰恰也是 AI。</b>模块三的 Aurora 系统，正是这一命题的落地实验。</p>
+
+  <h3><i>1.1</i>与 AI 同场入场的 Z 世代</h3>
+  <p>我 24 岁，在财会岗做核算，日常是审报销单、核发票、记台账、对账、月结。这活有个特点：不能出错，也没什么惊喜。可这行我从毕业做到现在，也没打算换——要换的是做法，不是行业。</p>
+  <p>更关键的是代际位置。Z 世代是与生成式 AI 同时进入职场的第一个世代，职业锚定期正好压在 AI 能力曲线的陡升段上。资深同事的护城河来自「前 AI 时代」的经验资本——他们见过手工账、经历过系统上线，那些记忆本身就是稀缺性；我的资历比他们浅得多，还没攒出那样的缓冲。<b>焦虑不是性格缺陷，是队列位置。</b></p>
+
+  <h3><i>1.2</i>三句话的立场</h3>
+  <blockquote>AI 更像一副外骨骼：不替人走路，但让人多扛一点。人的价值正往共情、判断和担责上挪——躲不开浪潮，那就学着在浪上换板。</blockquote>
+  <p>Autor 等（2003）的任务模型为它提供了支点：技术替代的从来是「任务」，不是「人」。一个人由几十项任务组成，被拿走几项，不等于被删除。真正的问题于是变成——我剩下那几项，还值不值钱。</p>
+  <p>我也在意另一件事：不只是我会不会被替代，而是被这轮技术甩下的那批人，有没有第二次机会。这是后来做那个系统的初衷。</p>
+
+  <h3><i>1.3</i>我的任务清单：把岗位拆成十五项</h3>
+  <p>既然替代以任务为单位发生，我就先把自己手上的活一项一项列出来——不写岗位说明书上的套话，只写我实际在做、能被观察到的动作：</p>
+  <p style="font-size:9.2pt;color:var(--muted);line-height:1.8;">判断栏的四个标签是我自己的分类口径：<b>AI 可代做</b>指规则明确、出错后还能事后查出来的环节；<b>人机协作</b>指 AI 出初稿、我签字定稿；<b>须人判断</b>指要拿准则与业务实质去权衡的；<b>人担责</b>指一旦出问题由我负责、转不给系统。清单依据 2026 年 10 月本人岗位的实际分工整理。</p>
+
+  <table class="tasks">
+    <colgroup><col style="width:11%"><col style="width:52%"><col style="width:12%"><col style="width:25%"></colgroup>
+    <thead><tr><th>No.</th><th>工作单元</th><th>频率</th><th>我的判断</th></tr></thead>
+    <tbody>
+      <tr><td>01</td><td>审核费用报销单据：单据完整性、审批流是否齐全</td><td>每日</td><td>AI 初筛，人复核</td></tr>
+      <tr><td>02</td><td>核验发票与附件合规：抬头、税号、金额、真伪</td><td>每日</td><td>AI 可代做</td></tr>
+      <tr><td>03</td><td>判断报销事项是否合乎制度与标准（超标、跨期、科目）</td><td>每日</td><td>须人判断</td></tr>
+      <tr><td>04</td><td>退回单据，并向报销人说明补正要求</td><td>每日</td><td>人为主</td></tr>
+      <tr><td>05</td><td>按月整理单据、排序装订</td><td>每月</td><td>AI 可代做</td></tr>
+      <tr><td>06</td><td>编制记账凭证、编号归档</td><td>每月</td><td>人机协作</td></tr>
+      <tr><td>07</td><td>登记现金日记账、日终盘点</td><td>每日</td><td>AI 可代做</td></tr>
+      <tr><td>08</td><td>登记银行流水台账、逐笔勾对</td><td>每日</td><td>AI 可代做</td></tr>
+      <tr><td>09</td><td>月末银行对账、编制余额调节表</td><td>每月</td><td>人机协作</td></tr>
+      <tr><td>10</td><td>追查未达账项与长期挂账</td><td>每月</td><td>须人判断</td></tr>
+      <tr><td>11</td><td>财务合同归集保管、借阅登记</td><td>不定期</td><td>人机协作</td></tr>
+      <tr><td>12</td><td>票据领用、核销与定期盘点</td><td>不定期</td><td>人担责</td></tr>
+      <tr><td>13</td><td>用 AI 提取单据信息，生成结构化台账</td><td>试行中</td><td>我在做</td></tr>
+      <tr><td>14</td><td>用 AI 比对台账与流水，定位差异条目</td><td>试行中</td><td>我在做</td></tr>
+      <tr><td>15</td><td>用 AI 清理重复文本（合同摘要、备注说明）</td><td>试行中</td><td>我在做</td></tr>
+    </tbody>
+  </table>
+  <div class="dist">
+    <div class="dbar"><i class="a1"></i><i class="a2"></i><i class="a3"></i><i class="a4"></i></div>
+    <div class="dleg">
+      <div><span class="sw a1"></span><b>5</b>AI 可代做或初筛</div>
+      <div><span class="sw a2"></span><b>3</b>人机协作</div>
+      <div><span class="sw a3"></span><b>4</b>须人判断 / 担责</div>
+      <div><span class="sw a4"></span><b>3</b>我在用 AI 试行</div>
+    </div>
+    <div class="dcap">十五项的去向 · 同一天的八项已在 AI 射程内，七项仍要人签字</div>
+  </div>
+
+  <p>列完这张表，2.2 的分数就不像凭感觉了：15 项里有 8 项落在「重复＋规则」区间，按工时估算接近我全部工作量的七成，正好对应重复性 9 与规则化 9；而第 3、4、10、12 项——制度判断、向人解释、追查未达账项、票据担责——没有一项能只把材料丢给模型就算完，也就对应了决策复杂度 3 与人际沟通 3。清单是打分的底稿，也是 4.3 里「该补哪块」的原始依据。</p>
 </section>
 
-<!-- M2 -->
+<!-- ========== 反白章：模块二论点 ========== -->
+<section class="invpage">
+  <div class="k">Module Two&nbsp;&nbsp;·&nbsp;&nbsp;Thesis</div>
+  <div class="big">替代发生在「工作模块」层面，<br>不发生在「职业人格」层面。</div>
+  <div class="rule"></div>
+  <p class="sub">技术拿走的是任务，不是人。一个人由几十项任务组成，被拿走几项，不等于被删除——真正的问题从来不是「我会不会被替代」，而是「剩下的那几项，值不值钱」。模块二先把这条边界画清楚，再拿它去量我的岗位。</p>
+  <div class="foot">The Unit of Replacement Is the Task, Not the Person&nbsp;&nbsp;·&nbsp;&nbsp;Autor et al., 2003</div>
+</section>
+
+<!-- ========== M2 ========== -->
 <section class="pb">
   <div class="modhead">
     <div class="label">Module Two</div>
     <h2>前沿科技深度剖析：智能体工作流重塑财会行业</h2>
     <div class="en">Deep-Dive: Agentic AI &amp; the Transformation of Accounting Work</div>
   </div>
-  <h3><i>2.1</i>技术界定：从「AI 工具」到「智能体工作流」</h3>
-  <p>本作品集聚焦的前沿科技是<b>智能体工作流（Agentic AI Workflow）</b>：它不是单点问答式的生成式 AI，而是能够拆解目标、调用工具、多步执行并自我校验的自主数字员工——例如自动完成「取数 → 记账 → 对账 → 出报表 → 生成分析」全链条的财务智能体。它与 RPA 的本质区别在于：RPA 模仿动作，智能体理解任务。</p>
 
-  <h3><i>2.2</i>对财会行业工作流程的重塑</h3>
-  <p>我以自身岗位为样本，从五个维度对核算工作进行替代风险评估（0–10 分）：</p>
+  <h3><i>2.1</i>技术界定：它到底做了什么</h3>
+  <p>先把对象界定清楚。<b>智能体工作流（Agentic Workflow）</b>不是「更聪明的问答框」，而是能拆解目标、调用工具、多步执行并自我校验的自主数字员工。它与 RPA 的差别不是程度，是性质：RPA 模仿人的动作，要人先把流程画给它；智能体理解任务本身，路径自己规划。</p>
+  <p>落在财务里，一条链条已经跑得通：取数、生成凭证、自动对账、输出报表，再写一段差异分析。原本三个人接力，现在是一个「人加一个智能体」。</p>
+
+  <h3><i>2.2</i>替代边界：五维评估</h3>
+  <p>我给这个岗位打五个分（10 分制）：重复性 9、规则化 9、创意需求 2、人际沟通 3、决策复杂度 3，构成图 01 的雷达图——形状压向「高重复、高规则、低创造、低决策」的一角。</p>
+
   <table>
     <thead><tr><th>Dimension</th><th>Score</th><th>判断依据</th></tr></thead>
     <tbody>
@@ -183,162 +379,267 @@
     </tbody>
   </table>
 
-  <div class="radarbox">
-    <svg viewBox="0 0 340 300" role="img" aria-label="五维风险雷达图">
-      <polygon points="170,46 269,118 231,234 109,234 71,118" fill="none" stroke="#e0dcd4"/>
-      <polygon points="170,72 244,126 216,213 124,213 96,126" fill="none" stroke="#e0dcd4"/>
-      <polygon points="170,98 220,135 202,192 138,192 120,135" fill="none" stroke="#e0dcd4"/>
-      <polygon points="170,124 195,143 187,171 153,171 145,143" fill="none" stroke="#e0dcd4"/>
-      <line x1="170" y1="150" x2="170" y2="46" stroke="#e0dcd4"/>
-      <line x1="170" y1="150" x2="269" y2="118" stroke="#e0dcd4"/>
-      <line x1="170" y1="150" x2="231" y2="234" stroke="#e0dcd4"/>
-      <line x1="170" y1="150" x2="109" y2="234" stroke="#e0dcd4"/>
-      <line x1="170" y1="150" x2="71" y2="118" stroke="#e0dcd4"/>
-      <polygon points="170,56 259,121 172,150 139,175 140,141" fill="rgba(106,107,191,.12)" stroke="#6a6bbf" stroke-width="1.4"/>
-      <circle cx="170" cy="56" r="3" fill="#6a6bbf"/><circle cx="259" cy="121" r="3" fill="#6a6bbf"/>
-      <circle cx="172" cy="150" r="3" fill="#6a6bbf"/><circle cx="139" cy="175" r="3" fill="#6a6bbf"/>
-      <circle cx="140" cy="141" r="3" fill="#6a6bbf"/>
-      <text x="170" y="28" text-anchor="middle" font-size="10" fill="#6b675f">重复性 9</text>
-      <text x="292" y="112" text-anchor="middle" font-size="10" fill="#6b675f">规则化 9</text>
-      <text x="246" y="258" text-anchor="middle" font-size="10" fill="#6b675f">创意 2</text>
-      <text x="94" y="258" text-anchor="middle" font-size="10" fill="#6b675f">沟通 3</text>
-      <text x="48" y="112" text-anchor="middle" font-size="10" fill="#6b675f">决策 3</text>
-    </svg>
-    <div class="rl" style="flex:1;">
-      <div><span>重复性 Repetition</span><span>09</span></div>
-      <div><span>规则化 Rule-based</span><span>09</span></div>
-      <div><span>创意需求 Creativity</span><span>02</span></div>
-      <div><span>人际沟通 Communication</span><span>03</span></div>
-      <div><span>决策复杂度 Decision</span><span>03</span></div>
-      <div style="border:none;"><span>整体替代风险</span><span style="color:#a8552f;">HIGH</span></div>
+  <figure class="radarfig">
+    <div class="rwrap">
+      <svg viewBox="0 0 340 306" role="img" aria-label="五维替代风险雷达图：虚线为 3 分与 6 分 Threshold，外环 7–10 为 AI 可代做区">
+      <polygon points="170.0,52.0 265.1,121.1 228.8,232.9 111.2,232.9 74.9,121.1" fill="rgba(168,85,47,.065)"/>
+      <polygon points="170.0,92.0 227.1,133.5 205.3,200.5 134.7,200.5 112.9,133.5" fill="#ffffff"/>
+      <polygon points="170.0,127.0 193.8,144.3 184.7,172.2 155.3,172.2 146.2,144.3" fill="none" stroke="#e8e3da" stroke-width="1"/>
+      <polygon points="170.0,102.0 217.6,136.5 199.4,192.5 140.6,192.5 122.4,136.5" fill="none" stroke="#e8e3da" stroke-width="1"/>
+      <polygon points="170.0,77.0 241.3,128.8 214.1,212.7 125.9,212.7 98.7,128.8" fill="none" stroke="#e8e3da" stroke-width="1"/>
+      <polygon points="170.0,52.0 265.1,121.1 228.8,232.9 111.2,232.9 74.9,121.1" fill="none" stroke="#e8e3da" stroke-width="1"/>
+      <line x1="170" y1="152" x2="170.0" y2="52.0" stroke="#e8e3da" stroke-width="1"/>
+      <line x1="170" y1="152" x2="265.1" y2="121.1" stroke="#e8e3da" stroke-width="1"/>
+      <line x1="170" y1="152" x2="228.8" y2="232.9" stroke="#e8e3da" stroke-width="1"/>
+      <line x1="170" y1="152" x2="111.2" y2="232.9" stroke="#e8e3da" stroke-width="1"/>
+      <line x1="170" y1="152" x2="74.9" y2="121.1" stroke="#e8e3da" stroke-width="1"/>
+      <polygon points="170.0,122.0 198.5,142.7 187.6,176.3 152.4,176.3 141.5,142.7" fill="none" stroke="#c9c2b5" stroke-width="1" stroke-dasharray="3 2.6"/>
+      <polygon points="170.0,92.0 227.1,133.5 205.3,200.5 134.7,200.5 112.9,133.5" fill="none" stroke="#c9c2b5" stroke-width="1" stroke-dasharray="3 2.6"/>
+      <polygon points="170.0,62.0 255.6,124.2 181.8,168.2 152.4,176.3 141.5,142.7" fill="rgba(85,86,184,.20)" stroke="#5556b8" stroke-width="1.8" stroke-linejoin="round"/>
+      <circle cx="170.0" cy="62.0" r="3" fill="#fff" stroke="#5556b8" stroke-width="1.8"/>
+      <circle cx="255.6" cy="124.2" r="3" fill="#fff" stroke="#5556b8" stroke-width="1.8"/>
+      <circle cx="181.8" cy="168.2" r="3" fill="#fff" stroke="#5556b8" stroke-width="1.8"/>
+      <circle cx="152.4" cy="176.3" r="3" fill="#fff" stroke="#5556b8" stroke-width="1.8"/>
+      <circle cx="141.5" cy="142.7" r="3" fill="#fff" stroke="#5556b8" stroke-width="1.8"/>
+      <text x="170.0" y="26.0" text-anchor="middle" font-size="12.5" font-family="Inter,sans-serif" fill="#6b675f">重复性 <tspan fill="#17191c" font-weight="600">9</tspan></text>
+      <text x="287.9" y="114.7" text-anchor="start" font-size="12.5" font-family="Inter,sans-serif" fill="#6b675f">规则化 <tspan fill="#17191c" font-weight="600">9</tspan></text>
+      <text x="242.9" y="259.3" text-anchor="start" font-size="12.5" font-family="Inter,sans-serif" fill="#6b675f">创意 <tspan fill="#17191c" font-weight="600">2</tspan></text>
+      <text x="97.1" y="259.3" text-anchor="end" font-size="12.5" font-family="Inter,sans-serif" fill="#6b675f">沟通 <tspan fill="#17191c" font-weight="600">3</tspan></text>
+      <text x="52.1" y="114.7" text-anchor="end" font-size="12.5" font-family="Inter,sans-serif" fill="#6b675f">决策 <tspan fill="#17191c" font-weight="600">3</tspan></text>
+      </svg>
+      <div class="rkey">
+        <div><b>0–3</b><span>人主导</span><i>我签字，AI 不越界</i></div>
+        <div><b>4–6</b><span>人机协作</span><i>AI 出初稿，我定稿</i></div>
+        <div><b>7–10</b><span>AI 可代做</span><i>人只做抽检</i></div>
+        <div class="rk"><b>整体替代风险</b><span>HIGH</span></div>
+      </div>
     </div>
-  </div>
-
-  <p>评估显示：凭证录入、自动对账、报表编制、发票验真、税费申报、月度结账六大模块均处高替代射程；而异常业务合规判断、跨部门协调、经营分析洞察、审计稽查应对四大模块难以被替代。这印证了关键结论：<b>AI 替代的是「工作模块」而非「职业人格」——被重塑的不是会计这个职业，而是它的能力图谱。</b></p>
-
-  <figure>
-    <img src="assets/flow.svg" alt="Aurora 系统业务流程图">
-    <figcaption><b>Fig. 01</b> Aurora 系统业务闭环：测评 → 识别 → 评估 → 画像 → 干预</figcaption>
+    <figcaption><b>Fig. 01</b> 财会核算岗五维替代风险雷达图 · 形状越靠外，越容易被智能体接管</figcaption>
   </figure>
 
-  <h3><i>2.3</i>雇佣形态演变：共享中心与「离岸外包 2.0」</h3>
-  <p>智能体工作流正在压缩财会雇佣金字塔的底层：企业共享服务中心（SSC）将核算岗集中化，为自动化提供规模化场景；当智能体可以全天候执行核算流程，「离岸外包」便从「把工作外包给更便宜的地区」，演变为「把工作外包给更便宜的智能体」。本地基础核算岗位因此承受全球化与智能化的双重挤压，企业转而争夺「懂业务、会驾驭 AI」的财务分析与 BP 人才。</p>
-  <div class="fill">补充 1–2 个行业实证案例（四大智能审计平台、用友/金蝶 AI 财务产品，或实习公司实践），附来源链接。</div>
+  <p>分数不是测量，是判断。刻度先定好，再逐项对照手上的活——换个人打，可能差一两分——<b>这是自评，不是测量</b>。它的价值不在精确，而在于把「我会不会被取代」那句模糊的恐惧，拆成<b>五个可以争论、也可以补的坐标</b>。</p>
+  <p>据此划界。AI 已能稳定接管六个模块：凭证录入审核、自动对账、报表编制合并、发票识别验真、税费申报、月度结账。仍然很难碰的四个：异常业务的合规判断与责任兜底、跨部门协调催收、经营分析洞察、审计与稽查应对。</p>
+  <p>Frey 与 Osborne（2017）估算会计审计人员有很高的自动化概率。我引用它，但要提一点批评：<b>他们以「职业」为分析单位，把一整份职业当成可整体替换的盒子，系统性高估了整岗替代。</b>真实发生的是任务级的蚕食。</p>
+  <p>所以核心论点是：<b>替代发生在「工作模块」层面，不发生在「职业人格」层面。</b>会计不会消失，消失的是它过去约七成的工作内容。被重塑的不是岗位，是能力图谱。</p>
 
-  <h3><i>2.4</i>人口结构视角：为什么焦虑集中在 Z 世代</h3>
-  <p>Z 世代（1995–2010 年生）是第一代职业发展轨迹与生成式 AI 能力曲线完全重叠的人群：当资深员工拥有「前 AI 时代」积累的权威护城河时，Z 世代正处于「技能尚在建立、护城河尚未成形」的阶段——替代风险对他们的职业预期冲击最大，也最具代际普遍性。这一「入行即遭遇技术奇点」的结构性处境，正是本作品集将干预对象锁定为 Z 世代的原因。</p>
+  <h3><i>2.3</i>共享服务中心与「离岸外包 2.0」</h3>
+  <p>共享服务中心把分散的核算岗集中到少数城市，本意降本，客观效果却是为自动化准备了规模化、标准化的场景——流程越统一，越容易被智能体接管，底层核算岗随之压缩。</p>
+  <p>全球化也换了形态：过去是工作流向更便宜的地区，现在是流向更便宜的智能体，出现个人级离岸竞争——我的对手不再是隔壁工位，而是一个每度电几分钱的模型。企业争夺的，从「会做账的人」变成「懂业务、能驾驭 AI 的财务 BP」。</p>
+  <p>这不是推演。德勤的财务机器人早就在凭证与对账环节跑批，普华永道的 Halo、毕马威的 Clara 把审计抽样换成了全量数据检验，国内用友 BIP、金蝶苍穹也把「智能记账—自动对账—报表生成」做成了标准模块。它们的切入口高度一致：几乎都落在我打分最高的那几个模块上——重复、规则、可核验。反过来，没有一家产品敢承诺替客户判断「这笔异常费用该不该资本化」，因为那要签字，要担责。</p>
+
+  <p>政策甚至跑在个体感受前面：财政部《会计信息化发展规划（2021—2025 年）》已把电子凭证数据标准与审计数字化转型列为「十四五」核心任务（财政部，2021）。当标准开始为机器读取而设计，核算岗就不只是「用软件」，而是「被系统吸收」。</p>
+
+  <h3><i>2.4</i>为什么焦虑集中在 Z 世代</h3>
+  <p>代际队列效应是第一层原因：入行即遭遇技术奇点，技能壁垒还没形成，替代已经抵达。</p>
+  <p>第二层是宏观的：老龄化推高整体用工成本，企业更有动力用自动化削减初级岗。<b>技术压力与人口压力在初级白领岗位上正面叠加</b>——这是「为什么偏偏是我们这一代」的关键，也是我坚持「面向个体，但看见结构」的原因。</p>
+  <p>这也不只是我的体感。Brougham 与 Haar（2018）测了 120 名员工，30 岁以下组的替代焦虑最高（均值 1.9，50 岁以上为 1.2），且焦虑越高，组织承诺越低、抑郁与离职意向越高。<b>焦虑是一笔可测量的组织成本</b>，这正是它值得被设计、而不只是被安慰的理由。</p>
+  <p>另一面是技能需求在挪位：世界经济论坛把 AI 与大数据列为未来五年增长最快的技能（World Economic Forum, 2025）。被拿走的是操作，被要价的是判断。</p>
+
+  <div class="plate">
+    <div class="plabel">Plate 01 · Aurora Workflow · 2026</div>
+    <figure style="margin-top:0;">
+      <img src="assets/flow.svg" alt="Aurora 系统业务流程图">
+      <figcaption><b>Fig. 02</b> Aurora 系统业务闭环：AI 对话测评 → 焦虑倦怠识别 → 岗位替代风险评估 → 不可替代性画像 → 能力方案与情绪疏导</figcaption>
+    </figure>
+    <p class="note"><b>读图：</b>五个环节共用一份语料——六轮对话采集语料，识别焦虑与倦怠，五维打分定位风险，反推画像，再给方案。改一次输入，后面全部重算；这也是我坚持让人打字、而不是让人选选项的原因。</p>
+    
+    <div class="mini3" style="margin-top:18px;">
+      <div><b>颜色是有分工的</b><p>蓝色三步是「采集与判断」，绿色两步是「输出与行动」。每换一次颜色，读的人就知道系统从「看」转到了「做」。</p></div>
+      <div><b>横排而非竖排</b><p>竖排会让人以为是先后无关的五个工具；横排放进一个回环，才看得出它是一份语料的五次复用。</p></div>
+      <div><b>先画图，再写代码</b><p>这张图是架构草图，不是事后总结。Fig. 03 那两张界面，就是它的第 1 步和第 3 步长出来的样子。</p></div>
+    </div>
+      <figure class="uifig" style="margin-top:20px;">
+        <div class="ui2">
+          <img src="assets/ui-chat.jpg" alt="Aurora 六轮对话测评界面">
+          <img src="assets/ui-report.jpg" alt="Aurora 测评报告界面">
+        </div>
+        <figcaption><b>Fig. 03</b> 系统实拍，非效果图：左为六轮对话测评，右为同一次对话生成的报告——等级、标签与五维雷达均由语料实时计算</figcaption>
+      </figure>
+  </div>
 </section>
 
-<!-- M3 -->
+<!-- ========== M3 ========== -->
 <section class="pb">
   <div class="modhead">
     <div class="label">Module Three</div>
-    <h2>未来工作场所与员工福祉创新设计：Aurora 系统</h2>
+    <h2>员工福祉创新设计：Aurora 系统</h2>
     <div class="en">Workplace Well-being Design — The Aurora System</div>
   </div>
 
-  <h3><i>3.1</i>设计思维全过程</h3>
+  <h3><i>3.1</i>痛点定义：安慰不等于证据</h3>
+  <p>Aurora 处理的是三重叠加：AI 替代焦虑、职业倦怠、精神内耗。现有方案为什么失效？科普「AI 不可怕」给的是安慰，心理测评问卷给的是标签，<b>都不是证据</b>。人要的不是安慰，是知道风险在哪、还剩下什么。</p>
+  <p>理论支点在这里。Tarafdar 等（2019）把技术压力拆成两支：同一项技术既可造成 <i>techno-distress</i>（耗竭、被支配），也可产生 <i>techno-eustress</i>（被赋能、更投入），分岔点不在技术，<b>在设计</b>。AI 引发了焦虑；但若把它做成「给我证据」的工具，同一项技术就转向另一支。</p>
+
+  <h3><i>3.2</i>设计思维五阶段</h3>
   <div class="steps">
-    <div class="step"><div class="n">01 / EMPATHIZE</div><b>共情</b><p>6 轮对话式测评，替代冰冷问卷，采集真实情绪语料</p></div>
-    <div class="step"><div class="n">02 / DEFINE</div><b>定义</b><p>AI 替代焦虑 × 职业倦怠 × 精神内耗的三重叠加</p></div>
-    <div class="step"><div class="n">03 / IDEATE</div><b>构思</b><p>与其科普「AI 不可怕」，不如让 AI 给出个性化证据</p></div>
-    <div class="step"><div class="n">04 / PROTOTYPE</div><b>原型</b><p>可交互网页：测评 → 报告 → 画像 → 疏导</p></div>
-    <div class="step"><div class="n">05 / TEST</div><b>测试</b><p>真实用户现场体验，结果随输入动态变化</p></div>
+    <div class="step"><div class="n">01 / EMPATHIZE</div><b>共情</b><p>6 轮对话式测评替代问卷，采集真实情绪语料</p></div>
+    <div class="step"><div class="n">02 / DEFINE</div><b>定义</b><p>焦虑 × 倦怠 × 内耗的三重叠加</p></div>
+    <div class="step"><div class="n">03 / IDEATE</div><b>构思</b><p>不讲道理，让 AI 给出「你个人的风险证据」</p></div>
+    <div class="step"><div class="n">04 / PROTOTYPE</div><b>原型</b><p>五模块闭环网页：测评→报告→画像→疏导</p></div>
+    <div class="step"><div class="n">05 / TEST</div><b>测试</b><p>同学现场换岗位重测，结论随之改变</p></div>
   </div>
+  <p>共情这一步我没发问卷，而是设计六轮对话：日常工作、AI 工具使用感受、对未来的担忧、压力来源、个人优势、学习意愿，依次展开，采集真实语料而不是选项。定义这一步把问题从「压力大」收敛成三重叠加——AI 替代焦虑、职业倦怠、精神内耗，它才第一次变得可以被设计。</p>
+  <p>真正的转折在构思。我原本想做「说服员工 AI 不可怕」的内容产品，写到一半发现那仍是说教，于是改成让 AI 生成「你个人的替代风险证据」——把岗位拆成五维打分，画成雷达图摆在面前。<b>从安慰转向证据</b>，这个项目才算立住。</p>
+  <p>原型是一个五模块闭环网页（界面见上一页 Plate 01）。测试那天我请了三位同学现场试：做 HR 的那位停了几秒，说「你系统里那句『我不是害怕 AI 会写凭证』，说的就是我」；做运营的同学换成自己的岗位重测，焦虑等级从高掉到中，回头问我能不能给她们团队也用。第三次我才发现，有人一路点「下一步」，把测评当问卷在赶——于是改成必须打字，答得太短还会追问。这一改，报告才真的做到因人而异。</p>
 
-  <h3><i>3.2</i>系统成果：一个「会共情的 AI 职业韧性教练」</h3>
-  <p>Aurora 系统包含五大闭环功能：AI 对话测评（识别焦虑等级与倦怠标签）→ 岗位替代风险评估（五维雷达图）→ 个人不可替代性画像（优势 / 短板 / 路径）→ 情绪疏导对话（焦虑暂停法、下班仪式等可落地方法）→ 数据导出（支持组织级岗位风险分析）。交互版可在浏览器直接体验，本归档版以截图与流程图为证。</p>
 
-  <figure>
-    <img src="assets/poster-b.png" alt="能力画像海报" style="max-height:120mm;">
-    <figcaption><b>Fig. 02</b> AI 生成的「个人不可替代性」治愈系海报 · 莫兰迪扁平风</figcaption>
+
+
+
+  <h3><i>3.3</i>从工具到机制：三项组织设计</h3>
+  <p>工具只能救愿意自救的人，所以补三个机制。</p>
+  <div class="mini3">
+    <div><b>AI 伙伴工坊</b><p>每月一次部门共创，让员工亲手用智能体跑通自己的一项重复工作，把「被替代者」换成「驾驭者」。</p></div>
+    <div><b>情绪韧性档案</b><p>匿名、自愿，让人力资源看到焦虑的分布而非等离职才复盘，实现前置干预。</p></div>
+    <div><b>AI 工具第一人</b><p>每个团队设一名转型大使，把「会玩 AI」从异类标签变成身份激励。</p></div>
+  </div>
+  <p>三项正好对应自我决定理论（Deci &amp; Ryan, 2000）的三种基本心理需求：<b>自主</b>（我选择怎么用）、<b>胜任</b>（我学会了）、<b>归属</b>（团队一起转）。</p>
+  <p>换工作要求—资源模型看（Bakker &amp; Demerouti, 2017）：这三项不减少要求，只增加资源；要求改不动时，<b>资源决定人还能撑多久</b>。</p>
+
+  <h3 style="margin-top:12px;"><i>3.4</i>伦理与边界：这套系统不该做什么</h3>
+  <p style="margin-top:4px;">Aurora 采集的是情绪语料，比成绩单更敏感，所以设计上先守三条：只问完成测评所必需的信息；默认匿名，报告只存在用户自己的浏览器里，不上传、不接入人力资源系统；用户可随时清空。自愿是底线，不是姿态——一旦变成强制，真话就消失了。</p>
+  <p>它也不是诊断工具。输出的是自评坐标，不是临床结论；若对话中出现持续失眠、自伤念头这类信号，系统只做一件事——停下来，给出学校辅导中心与员工援助计划（EAP）的转介信息，不试图治疗。同理，它绝不能被用于招聘、晋升或裁员评估：一旦如此，「安全的自我陈述」立刻变成「供词」，这是我最不愿见到的误用。</p>
+  <p>最后是能力边界。Aurora 改不了岗位总量与薪酬结构，它只能给个体一份在不确定中的行动能力；五维分数是自评而非测量，模型也会出错，必须由人复核。把边界写在明处，比假装它不存在更有说服力。</p>
+
+  <figure style="margin-top:18px;">
+    <img src="assets/poster-cartoon.jpg" alt="个人不可替代性能力画像海报" style="display:block;width:100mm;height:auto;max-height:none;margin:0 auto;border:none;">
+    <figcaption style="display:block;width:100mm;margin:13px auto 0;text-align:left;line-height:1.75;"><b>Fig. 04</b> 「个人不可替代性」能力画像海报 · 扁平插画 · 2026.11<br>图左上角并置两个「高」：风险是真的，出路也是真的；中间五件事就是差值</figcaption>
   </figure>
 
-  <h3><i>3.3</i>从个人工具到组织机制：落地构想</h3>
-  <div class="mini3">
-    <div><b>AI 伙伴工坊</b><p>每月一次部门级 AI 工具共创会，让员工从「被替代者」转为「驾驭者」，重建掌控感与团队归属感。</p></div>
-    <div><b>情绪韧性档案</b><p>将 Aurora 测评纳入员工关怀体系（匿名、自愿），HR 据此前置干预，而非事后补救。</p></div>
-    <div><b>AI 工具第一人</b><p>每个团队设一名 AI 转型大使，把替代焦虑转化为身份激励。</p></div>
-  </div>
-  <blockquote>福祉设计的核心洞见：员工需要的不是「AI 不会取代你」的安抚话术，而是「你有驾驭 AI 的具体路径」的可信证据——证据由 AI 自己生成，最有说服力。</blockquote>
+
 </section>
 
-<!-- M4 -->
+<!-- ========== M4 ========== -->
 <section class="pb">
   <div class="modhead">
     <div class="label">Module Four</div>
-    <h2>学期反思历程与职业行动路线图</h2>
+    <h2>反思历程与职业行动路线图</h2>
     <div class="en">Reflective Learning Journey &amp; Strategic Career Roadmap</div>
   </div>
 
-  <h3><i>4.1</i>结构化反思：Gibbs 反思循环</h3>
-  <table>
-    <thead><tr><th>Stage</th><th>我的反思</th></tr></thead>
-    <tbody>
-      <tr><td>描述 Description</td><td>学期初，公司开始试点智能报销与自动记账。我第一次看着系统十几秒生成一整个月的费用凭证；同一天，我加班到十点手工对账。回家的地铁上刷到「AI 将取代数百万会计」的推送，我把手机扣在腿上，很久没说话。</td></tr>
-      <tr><td>感受 Feelings</td><td>不是愤怒，是失重。一半是「终于有人替我干这些破活了」的轻松，一半是「那我算什么」的恐慌。做 Aurora 时也有同样的矛盾：AI 十分钟做出了我原本要熬一晚的页面，我既兴奋，又有点心虚。</td></tr>
-      <tr><td>评价 Evaluation</td><td>最好的体验，是同学现场测完说「你系统里那句话说的就是我」；最难的，是前几周读不进去理论，觉得全球化和人口结构离我的加班很远——直到我用它解释了自己的处境。</td></tr>
-      <tr><td>分析 Analysis</td><td>三个转折。其一，「岗位」和「工作模块」是两回事：五维评分里重复性 9 分、决策 3 分，被替代的是模块，不是我。其二，我的焦虑有结构性来源：Z 世代职业锚定期与 AI 能力曲线完全重叠，共享中心与「离岸外包 2.0」又在压缩底层核算岗——不全是我不够努力。其三，情绪本身也可以是设计对象：CILO2 让我明白员工福祉不是福利，而是生产力的基础设施。Gibbs 逼我承认：我原先的恐惧里有一半是「想象中的替代」，我缺的是证据——而证据可以自己造出来。</td></tr>
-      <tr><td>结论 Conclusion</td><td>职业韧性 = 专业判断 × 人际共情 × AI 驾驭力。焦虑的解药不是安慰，是具体的下一步。</td></tr>
-      <tr><td>行动 Action</td><td>见下方 1–2 年路线图。</td></tr>
-    </tbody>
-  </table>
+  <h3><i>4.1</i>Gibbs 循环里的三次转折</h3>
+  <p>按 Gibbs（1988）走一遍，我只挑讲得深的说。</p>
+  <p><b>描述与感受</b>：那晚的场景我写了很多次。不是愤怒，是失重——一半是「终于有人替我干这些破活了」的轻松，一半是「那我算什么」的恐慌。两种情绪同时成立，我不打算只留体面的那一个。</p>
+  <p>分析是真正改变我的部分，有三次转折。</p>
+  <p><b>一次，岗位不等于工作模块。</b>看到「重复性 9」和「决策复杂度 3」并排放着，我第一次具体看见：被拿走的那部分，本来也是我不太喜欢的部分。恐惧从「我要消失了」变成「我该补哪块」。</p>
+  <p><b>二次，焦虑有结构性来源。</b>代际重叠、共享服务中心、外包 2.0，都不是我不够努力。承认这点不是卸责，而是把力气用对地方：结构改不了，位置可以挪。</p>
+  <p><b>三次，情绪可以是设计对象。</b>我原以为福祉就是发福利，做完系统才理解它是生产力基础设施——每天担心被替代的人，不可能有创造力。</p>
+  <blockquote>结论压成式子：职业韧性 ＝ 专业判断 × 人际共情 × AI 驾驭力，相乘而非相加，缺一项归零。</blockquote>
 
-  <h3><i>4.2</i>最深的一次转折</h3>
+  <h3 style="page-break-before:always;margin-top:0;"><i>4.2</i>最深的一次转折</h3>
   <p>真正让我改变的，不是某节课，而是给自己的工作打分的那一刻。我一直以为「会计」是一个整体，要么被保留，要么被取代；可当我把它拆成五个维度、逐项打分，看到重复性 9 分、决策 3 分时，我第一次意识到：被 AI 拿走的是那些我本来也不喜欢的部分，而剩下的 3 分，恰恰是我一直没认真练的部分。那天我把原来的计划表划掉，改写成了「三个月内做出第一份经营分析」。恐惧还在，但它从一团雾变成了一个可以排期的事。</p>
-  <div class="fill">建议补一句你的真实细节（例如第一次做出经营分析后领导的反馈），让转折更有说服力。</div>
+  <p>第一份经营分析交上去，主管翻到第三页停了一下，说了句「这部分以前没人写过」。就这一句，比任何鼓励都管用——它证明那 3 分不是天赋，是练得出来的。</p>
 
-  <h3><i>4.3</i>个人职业适应性战略路线图</h3>
-  <table>
-    <thead><tr><th>阶段</th><th>目标</th><th>关键行动</th></tr></thead>
-    <tbody>
-      <tr><td>短期 3–6 个月</td><td>把 AI 从威胁变武器</td><td>成为团队「AI 财务工具第一人」；完成一门 AI + 财务实操课；每月产出一份经营分析；启动中级会计 / CMA 备考</td></tr>
-      <tr><td>中长期 1–2 年</td><td>完成角色跃迁</td><td>向财务分析 / 业务财务 BP 转型；主导一个财务数字化小项目；沉淀个人作品集，让能力「看得见」</td></tr>
-    </tbody>
-  </table>
-  <blockquote>替代不会发生在我身上——因为我选择成为转型本身。</blockquote>
+  <h3><i>4.3</i>职业行动路线图</h3>
+  <div class="tl">
+    <div class="stage">
+      <div class="per">短期<b>3–6 个月</b></div>
+      <div class="rail"></div>
+      <div class="cnt">
+        <div class="goal">把 AI 从威胁变武器</div>
+        <p>成为团队「AI 财务工具第一人」；把任务清单第 13–15 项的三件试行固化成流程（单据信息抽取、台账与流水比对、重复文本清理），并写成一页操作说明交给同事；修一门 AI 与财务结合的实操课；每月主动产出一份经营分析；把 CPA 剩下科目按计划考完。</p>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="per">中长期<b>1–2 年</b></div>
+      <div class="rail"></div>
+      <div class="cnt">
+        <div class="goal">在财务这条线上往上走</div>
+        <p>从核算走向财务分析 / 业务财务 BP——仍是财务，不换行；主导一个数字化小项目；把过程沉淀成可展示的作品集，让能力「看得见」。</p>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="per">持续<b>监测机制</b></div>
+      <div class="rail"></div>
+      <div class="cnt">
+        <div class="goal">可被检验</div>
+        <p>每学期用 Aurora 自测一次，对照焦虑等级与倦怠标签是否真的下降，而不是写给自己看的决心书。</p>
+      </div>
+    </div>
+  </div>
+  <p style="margin-top:16px;">这条路线里没有「换行」这个选项。会计是我唯一熟悉的战场，我的策略不是撤退，而是在原地把阵地往高处挪——从记录价值，走向解释价值。判断标准也很朴素：一年后如果我还在用同样的方式贴发票、对流水，只是多考过两门 CPA，那这份路线图就算失败。</p>
 </section>
 
-<!-- APPENDIX A -->
+<!-- ========== 结语 ========== -->
+<section class="pb">
+  <div class="modhead">
+    <div class="label">Epilogue</div>
+    <h2>结语</h2>
+    <div class="en">A Closing Note</div>
+  </div>
+  <p class="lead">写到这里，那个地铁上的夜晚已经很远了。我不能保证自己不被替代。但我能保证两件事：被替代的那部分，不会是我最值钱的那部分；而这行我会继续做下去，只是换一种做法。</p>
+  <p>技术从不淘汰人，淘汰的是没有重新给自己定价的人；而重新定价这件事，恰好是 AI 帮不上、也抢不走的。</p>
+
+  <div class="closer">
+    <div class="cline"></div>
+    <div class="cbig">这行我会继续做下去，<br>只是换一种做法。</div>
+  </div>
+
+  <div class="qrrow">
+    <div class="url">线上交互版本，支持现场六轮测评与即时报告：<br>https://wwen-wy.github.io/my-website/</div>
+    <figure>
+      <img src="assets/qr.png" alt="交互作品集二维码">
+      <figcaption><b>Scan</b> 扫码进入</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ========== APPENDIX A ========== -->
 <section class="appx">
   <div class="modhead">
     <div class="label">Appendix A</div>
     <h2>生成式 AI 使用声明</h2>
+    <div class="en">Declaration on the Use of Generative AI</div>
   </div>
-  <p>本作品集在完成过程中使用了生成式 AI 工具辅助，现将人机分工边界声明如下：</p>
+  <p>本作品集在写作与制作过程中使用生成式 AI 作为协作工具。为符合学术诚信要求，现将人机分工边界具体声明如下。</p>
   <table>
     <thead><tr><th>环节</th><th>AI 承担的工作</th><th>本人承担的工作</th></tr></thead>
     <tbody>
-      <tr><td>选题与框架</td><td>提供结构建议</td><td>选题确定、论点取舍、逻辑校验</td></tr>
-      <tr><td>素材制作</td><td>生成海报图像、流程图 SVG、交互网页代码、雷达图可视化</td><td>提出设计需求与审美标准、测试验收、迭代修改</td></tr>
-      <tr><td>文字论述</td><td>辅助语言润色与排版</td><td>核心观点、个人经历、反思内容均由本人撰写并对真实性负责</td></tr>
-      <tr><td>测评话术</td><td>协助设计对话流程</td><td>基于积极心理学原则的审核与调适</td></tr>
+      <tr><td>选题与框架</td><td>依据本人给定方向提供结构建议、罗列备选切口</td><td>选题确定、核心命题提出、论点取舍、逻辑校验</td></tr>
+      <tr><td>文字论述</td><td>依据本人提纲扩写段落、润色语句、调整语序</td><td>提供亲历场景与真实数据、逐句改写与判断、对全部结论负责</td></tr>
+      <tr><td>素材制作</td><td>生成海报图像、流程图 SVG、雷达图与网页前端代码</td><td>提出设计需求与审美标准、设定五维评分标准与实际分值、测试验收与迭代</td></tr>
+      <tr><td>测评话术</td><td>协助设计六轮对话流程与疏导话术草案</td><td>基于积极心理学原则审核调适、设计关键词分析逻辑</td></tr>
+      <tr><td>文献</td><td>检索并整理参考文献线索</td><td>核对原文与年份、判断文献是否支撑论点、对 Frey &amp; Osborne 提出方法批评</td></tr>
     </tbody>
   </table>
-  <div class="fill">补充实际使用的工具名称与用途，并按课程要求附完整声明书、注明使用日期与版本。</div>
-  <p style="margin-top:14px;"><b>诚信承诺：</b>本人确认，作品集中所有分析结论、反思与职业规划均为个人独立思考；AI 输出内容均经本人验证、修改后采用，未将 AI 生成内容直接冒充为个人原创观点。</p>
-  <p style="margin-top:22px;font-family:var(--serif);">签名：＿＿＿＿＿＿　　日期：＿＿＿＿＿＿</p>
+  <p style="margin-top:12px;"><b>实际使用的工具：</b>WorkBuddy 桌面端 AI 助手（文本协作、代码与页面生成）、其内置图像生成功能（Fig. 04 海报）、Google Fonts 思源宋体（仅字体资源，非生成式）。使用时间：2026 年 10 月至 11 月；文本模型版本随客户端更新，具体版本号以使用当日客户端信息为准。</p>
+  <p style="margin-top:12px;"><b>诚信承诺：</b>本人确认，作品集中所有个人经历、岗位观察与测试反馈均为本人真实情况或真实收集；AI 输出内容均经本人验证、改写后采用，未将 AI 生成内容直接冒充为个人原创观点。AI 是本作品的协作者，不是作者。</p>
+  <p style="margin-top:20px;font-family:var(--serif);">签名：＿＿＿＿＿＿　　日期：＿＿＿＿＿＿</p>
 </section>
 
-<!-- APPENDIX B -->
+<!-- ========== APPENDIX B ========== -->
 <section class="appx">
   <div class="modhead">
     <div class="label">Appendix B</div>
-    <h2>Gibbs 反思引导清单（摘要）</h2>
+    <h2>参考文献</h2>
+    <div class="en">References (APA 7th)</div>
   </div>
-  <p style="font-size:9.5pt;color:var(--muted);">完整版 18 问见随附文档。写作时逐问自答，再浓缩进 4.1 表格，可有效避免流水账。三个检验标准：写具体事件而非一般感受；每段必须有认知前后对比；允许情绪矛盾。</p>
+  <p class="ref">Autor, D. H., Levy, F., &amp; Murnane, R. J. (2003). The skill content of recent technological change: An empirical exploration. <i>The Quarterly Journal of Economics, 118</i>(4), 1279–1333.</p>
+  <p class="ref">Bakker, A. B., &amp; Demerouti, E. (2017). Job demands–resources theory: Taking stock and looking forward. <i>Journal of Occupational Health Psychology, 22</i>(3), 273–285.</p>
+  <p class="ref">Brougham, D., &amp; Haar, J. (2018). Smart technology, artificial intelligence, robotics, and algorithms (STARA): Employees' perceptions of our future workplace. <i>Journal of Management &amp; Organization, 24</i>(2), 239–257.</p>
+  <p class="ref">Deci, E. L., &amp; Ryan, R. M. (2000). The "what" and "why" of goal pursuits: Human needs and the self-determination of behavior. <i>Psychological Inquiry, 11</i>(4), 227–268.</p>
+  <p class="ref">Frey, C. B., &amp; Osborne, M. A. (2017). The future of employment: How susceptible are jobs to computerisation? <i>Technological Forecasting and Social Change, 114</i>, 254–280.</p>
+  <p class="ref">Gibbs, G. (1988). <i>Learning by doing: A guide to teaching and learning methods</i>. Further Education Unit.</p>
+  <p class="ref">Tarafdar, M., Cooper, C. L., &amp; Stich, J.-F. (2019). The technostress trifecta – techno-eustress, techno-distress, and design: A conceptual framework. <i>Information Systems Journal, 29</i>(1), 6–22.</p>
+  <p class="ref">World Economic Forum. (2025). <i>The future of jobs report 2025</i>.</p>
+  <p class="ref">财政部. (2021). <i>会计信息化发展规划（2021—2025 年）</i>（财会〔2021〕36 号）. https://www.gov.cn/zhengce/zhengceku/2022-01/06/content_5666675.htm</p>
+
+  <div class="modhead" style="margin-top:34px;">
+    <div class="label">Appendix C</div>
+    <h2>制品索引</h2>
+    <div class="en">Index of Artefacts</div>
+  </div>
   <table>
-    <thead><tr><th>阶段</th><th>核心追问</th></tr></thead>
+    <thead><tr><th>编号</th><th>制品</th><th>对应位置</th></tr></thead>
     <tbody>
-      <tr><td>描述</td><td>哪个具体时刻让你第一次感到 AI 在改变你的职业？</td></tr>
-      <tr><td>感受</td><td>面对「替代率」数据时，第一反应是什么？强度如何？</td></tr>
-      <tr><td>评价</td><td>哪个环节最有价值？哪个最挫败？你的作品集自评几分？</td></tr>
-      <tr><td>分析</td><td>哪个理论真正改变了你的理解？如果那个证据不存在，你还会改变吗？</td></tr>
-      <tr><td>结论</td><td>你为「不可替代性」总结出自己的公式了吗？</td></tr>
-      <tr><td>行动</td><td>未来 3–6 个月的三个最小可执行动作是什么？如何监测成长？</td></tr>
+      <tr><td>Fig. 01</td><td>财会岗五维替代风险雷达图</td><td>模块二 2.2；交互系统报告页</td></tr>
+      <tr><td>Fig. 02</td><td>Aurora 系统业务流程图</td><td>模块二末；SVG 矢量原文件</td></tr>
+      <tr><td>Fig. 03</td><td>Aurora 系统界面实拍（对话测评 / 测评报告）</td><td>模块二末 · Plate 01；截自交互系统</td></tr>
+      <tr><td>Fig. 04</td><td>个人不可替代性能力画像海报</td><td>模块三 3.4 末</td></tr>
+      <tr><td>System</td><td>Aurora 交互测评系统（六轮对话 / 动态报告 / 情绪疏导）</td><td><a href="https://wwen-wy.github.io/my-website/" style="border-bottom:1px solid #c9c4bb;text-decoration:none;color:inherit;">wwen-wy.github.io/my-website</a></td></tr>
     </tbody>
   </table>
-  <div class="footer-note"><span>INT6140 · Individual ePortfolio · Print Archive</span><span>2026</span></div>
+
 </section>
 
 </div>
